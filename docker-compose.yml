@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  server:
+    command: ["serve"]
+    environment:
+      TZ: America/Los_Angeles
+    image: equalos/docusaurus:slim-alpine
+    ports:
+    - 3000:3000 # http
+    restart: always
+    user: 1000:1000
+    volumes:
+    - .:/website
