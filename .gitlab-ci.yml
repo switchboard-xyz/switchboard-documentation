@@ -1,4 +1,4 @@
-.job_template: &job_configuration
+default:
   before_script:
   - yarn install --cache-folder .yarn-cache
   cache:
@@ -6,21 +6,18 @@
       files:
       - package.json
     paths:
-    - node_modules/
-    - public/
+    - node_modules
+    - public
   - key:
       files:
       - yarn.lock
-      paths:
-      - .yarn-cache/
-
-default:
+    paths:
+    - .yarn-cache
   image:
     entrypoint: [""]
     name: equalos/docusaurus:slim-alpine
 
 pages:
-  <<: *job_configuration
   after_script:
   # https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets
   - find public -regex '.*\.\(css\|htm\|html\|ics\|js\|json\|svg\|text\|toml\|txt\|xml\|yaml\|yml\)$' -type f -exec brotli -fk {} \; -exec gzip -fk {} \;
@@ -39,10 +36,25 @@ pages:
     TZ: America/New_York
 
 test:
-  <<: *job_configuration
   artifacts:
     paths:
     - test
+  cache:
+  - key:
+      files:
+      - package.json
+    paths:
+    - node_modules
+    - test
+  - key:
+      files:
+      - yarn.lock
+    paths:
+    - .yarn-cache
+  inherit:
+    default:
+    - before_script
+    - image
   rules:
   - if: '$CI_COMMIT_BRANCH != "main"'
   script: yarn run build --out-dir test
