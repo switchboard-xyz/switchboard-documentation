@@ -27,8 +27,6 @@ pages:
   artifacts:
     paths:
     - public
-  cache:
-    <<: *global_cache
   rules:
   - if: '$CI_COMMIT_BRANCH == "main"'
   script: yarn run build --out-dir public
