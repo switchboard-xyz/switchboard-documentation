@@ -62,6 +62,11 @@ test:
   variables:
     TZ: America/New_York
 
+debug:
+  image:
+    name: alpine
+  script: export
+
 workflow:
   rules:
   - if: '$CI_COMMIT_BRANCH'
