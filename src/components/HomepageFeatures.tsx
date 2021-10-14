@@ -5,7 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from "react";
-import styles from "./HomepageFeatures.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
 import { Box, Card, Typography, Grid, CardActionArea } from "@mui/material";
