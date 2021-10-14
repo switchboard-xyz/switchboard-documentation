@@ -6,15 +6,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Switchboard Documentation v2',
+  tagline: 'Community curated lightspeed data feeds on-chain',
   url: 'https://switchboard-xyz.gitlab.io',
   baseUrl: '/v2/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'switchboard-xyz', // Usually your GitHub org/user name.
+  projectName: 'v2', // Usually your repo name.
 
   presets: [
     [
