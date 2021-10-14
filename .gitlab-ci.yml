@@ -62,6 +62,14 @@ test:
   variables:
     TZ: America/New_York
 
+debug:
+  image:
+    name: alpine
+  inherit:
+    default: false
+  script: export
+  stage: .post
+
 workflow:
   rules:
   - if: '$CI_COMMIT_BRANCH'
