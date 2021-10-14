@@ -1,42 +1,45 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Switchboard Documentation',
-  tagline: 'Community curated lightspeed data feeds on-chain',
+  title: "Switchboard",
+  tagline: "Community curated lightspeed data feeds on-chain",
   url:
-    process.env.NODE_ENV === 'production' ? 'https://switchboard-xyz.gitlab.io' : 'http://localhost',
-  baseUrl:
-    process.env.NODE_ENV === 'production' ? '/v2/' : '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'switchboard-xyz', // Usually your GitHub org/user name.
-  projectName: 'v2', // Usually your repo name.
+    process.env.NODE_ENV === "production"
+      ? "https://switchboard-xyz.gitlab.io"
+      : "http://localhost",
+  baseUrl: process.env.NODE_ENV === "production" ? "/v2/" : "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "switchboard-xyz", // Usually your GitHub org/user name.
+  projectName: "v2", // Usually your repo name.
 
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
+
           editUrl:
-            process.env.NODE_ENV === 'production' ? process.env.CI_PROJECT_URL + '/-/edit/main/' : '/',
+            process.env.NODE_ENV === "production"
+              ? process.env.CI_PROJECT_URL + "/-/edit/main/"
+              : "/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            process.env.NODE_ENV === 'production' ? process.env.CI_PROJECT_URL + '/-/edit/main/' : '/',
+            process.env.NODE_ENV === "production"
+              ? process.env.CI_PROJECT_URL + "/-/edit/main/"
+              : "/",
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -45,83 +48,129 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+        switchConfig: {
+          darkIcon: "🌜",
+          lightIcon: "☀️",
+          // React inline style object
+          // see https://reactjs.org/docs/dom-elements.html#style
+          darkIconStyle: {
+            marginLeft: "2px",
+          },
+          lightIconStyle: {
+            marginLeft: "1px",
+          },
+        },
+      },
+      // Only for code blocks
+      prism: {
+        theme: require("prism-react-renderer/themes/shadesOfPurple"),
+        darkTheme: require("prism-react-renderer/themes/github"),
+      },
       navbar: {
-        title: 'Switchboard',
+        title: "Switchboard",
+        hideOnScroll: true,
         logo: {
-          alt: 'Switchboard Logo',
-          src: 'img/logo.svg',
+          alt: "Switchboard Logo",
+          src: "img/switchboard_purple.png",
+          srcDark: "img/switchboard_purple.png",
         },
         items: [
+          // Need to bring in Algolia DocSearch https://docsearch.algolia.com/
+          // {
+          //   type: "search",
+          //   position: "right",
+          // },
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
+            type: "doc",
+            docId: "about/introduction",
+            position: "left",
+            label: "Docs",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: "blog", label: "Blog", position: "left" },
           {
-            href: 'https://github.com/switchboard-xyz',
-            label: 'GitHub',
-            position: 'right',
+            type: "localeDropdown",
+            position: "right",
+          },
+          {
+            href: "https://github.com/switchboard-xyz",
+            label: "GitHub",
+            position: "right",
           },
         ],
+      },
+      i18n: {
+        defaultLocale: "en",
+        locales: ["en", "fr", "es"],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: "Overview",
+                to: "/docs/",
+              },
+              {
+                label: "Rust API Docs",
+                to: "/docs/",
+              },
+              {
+                label: "Client API Docs",
+                to: "/docs/",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/switchboardxyz',
+                label: "Discord",
+                href: "https://discord.com/invite/sNeGymrabT",
               },
               {
-                label: 'Discord',
-                href: 'https://discord.com/invite/sNeGymrabT',
+                label: "Twitter",
+                href: "https://twitter.com/switchboardxyz",
               },
-							{
-								label: 'Telegram',
-								href: 'https://t.me/switchboardxyz',
-							},
-							{
-								label: 'LinkedIn',
-								href: 'https://www.linkedin.com/company/switchboardxyz',
-							},
+              {
+                label: "Telegram",
+                href: "https://t.me/switchboardxyz",
+              },
+              {
+                label: "Telegram",
+                href: "https://t.me/switchboardxyz",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/switchboardxyz",
+              },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Medium",
+                href: "https://switchboardxyz.medium.com/",
               },
-							{
-								label: 'Jobs',
-								href: 'https://app.trinethire.com/companies/35264-switchboard-technology-labs/jobs',
-							},
               {
-                label: 'GitHub',
-                href: 'https://github.com/switchboard-xyz',
+                label: "Jobs",
+                href: "https://app.trinethire.com/companies/35264-switchboard-technology-labs/jobs",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/switchboard-xyz",
               },
             ],
           },
         ],
+
         copyright: `Copyright © ${new Date().getFullYear()} Switchboard Technology Labs, Inc.`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
       },
     }),
 };
