@@ -65,6 +65,8 @@ test:
 debug:
   image:
     name: alpine
+  inherit:
+    default:
   script: export
 
 workflow:
