@@ -9,9 +9,9 @@ const config = {
 	title: 'Switchboard Documentation',
   tagline: 'Community curated lightspeed data feeds on-chain',
   url:
-    process.env.NODE_ENV === 'production' ? 'https://switchboard-xyz.gitlab.io/' : 'http://localhost' + process.env.PORT,
+    process.env.NODE_ENV === 'production' ? 'https://switchboard-xyz.gitlab.io' : 'http://localhost',
   baseUrl:
-    process.env.NODE_ENV === 'production' ? '/v2/' : '/test/',
+    process.env.NODE_ENV === 'production' ? '/v2/' : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
