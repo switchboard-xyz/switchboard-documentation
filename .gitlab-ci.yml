@@ -68,6 +68,7 @@ debug:
   inherit:
     default:
   script: export
+  stage: debug
 
 workflow:
   rules:
