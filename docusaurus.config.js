@@ -6,10 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Switchboard Documentation v2',
+	title: 'Switchboard Documentation',
   tagline: 'Community curated lightspeed data feeds on-chain',
-  url: 'https://switchboard-xyz.gitlab.io',
-  baseUrl: '/v2/',
+  url:
+    process.env.NODE_ENV === 'production' ? 'https://switchboard-xyz.gitlab.io/' : 'http://localhost' + process.env.PORT,
+  baseUrl:
+    process.env.NODE_ENV === 'production' ? '/v2/' : '/test/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -24,13 +26,14 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          editUrl:
+            process.env.NODE_ENV === 'production' ? process.env.CI_PROJECT_URL + '/-/edit/main/docs/' : '/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+            process.env.NODE_ENV === 'production' ? process.env.CI_PROJECT_URL + '/-/edit/main/blog/' : '/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -43,9 +46,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Switchboard',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Switchboard Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -57,7 +60,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/switchboard-xyz',
             label: 'GitHub',
             position: 'right',
           },
@@ -79,17 +82,21 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Twitter',
+                href: 'https://twitter.com/switchboardxyz',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.com/invite/sNeGymrabT',
               },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+							{
+								label: 'Telegram',
+								href: 'https://t.me/switchboardxyz',
+							},
+							{
+								label: 'LinkedIn',
+								href: 'https://www.linkedin.com/company/switchboardxyz',
+							},
             ],
           },
           {
@@ -99,14 +106,18 @@ const config = {
                 label: 'Blog',
                 to: '/blog',
               },
+							{
+								label: 'Jobs',
+								href: 'https://app.trinethire.com/companies/35264-switchboard-technology-labs/jobs',
+							},
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/switchboard-xyz',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Switchboard Technology Labs, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
