@@ -9,6 +9,8 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import HomePageHeader from "../components/HomePageHeader";
+import { Box, Divider } from "@mui/material";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -19,7 +21,7 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link className="button button--secondary button--lg" to="/docs">
-            Switchboard Docs
+            ◎ Switchboard Docs ◎
           </Link>
         </div>
       </div>
@@ -31,12 +33,15 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`${siteConfig.title}`}
+      description="Documentation for Switchboard V2"
     >
-      <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <HomepageHeader />
+        <Box sx={{ m: 4 }}>
+          <Divider sx={{ my: 2 }} />
+          <HomepageFeatures />
+        </Box>
       </main>
     </Layout>
   );

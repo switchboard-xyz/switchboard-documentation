@@ -142,10 +142,6 @@ const config = {
                 href: "https://t.me/switchboardxyz",
               },
               {
-                label: "Telegram",
-                href: "https://t.me/switchboardxyz",
-              },
-              {
                 label: "LinkedIn",
                 href: "https://www.linkedin.com/company/switchboardxyz",
               },

@@ -8,13 +8,7 @@ import React from "react";
 import styles from "./HomepageFeatures.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  CardActionArea,
-  Typography,
-} from "@mui/material";
+import { Box, Card, Typography, Grid, CardActionArea } from "@mui/material";
 
 type FeatureItem = {
   title: string;
@@ -53,51 +47,63 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, image, description, linkTo }: FeatureItem) {
   return (
-    <Link to={linkTo}>
-      <Card
-        sx={{
-          maxWidth: 345,
-          backgroundColor: "inherit",
-        }}
-        elevation={0}
-      >
-        <CardActionArea sx={{ alignItems: "center" }}>
-          <CardContent>
-            <Typography
-              color="initial"
-              gutterBottom
-              variant="h5"
-              component="div"
-            >
-              {title}
-            </Typography>
-            <Typography variant="body2" color="initial">
-              {description}
-            </Typography>
-          </CardContent>
-          <CardMedia
-            component="img"
-            height="275"
-            image={useBaseUrl(image)}
-            alt="feature card"
-            sx={{ width: 200, height: 200 }}
-          />
-        </CardActionArea>
-      </Card>
-    </Link>
+    <Card sx={{ backgroundColor: "inherit" }} elevation={2}>
+      <CardActionArea>
+        <Link to={linkTo} style={{ textDecoration: "none" }}>
+          <Grid
+            container
+            xs={12}
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            sx={{ marginTop: 3, textAlign: "center" }}
+          >
+            <Grid item>
+              <Typography
+                color="initial"
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                {title}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="body2" color="initial">
+                {description}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Box
+                component="img"
+                src={useBaseUrl(image)}
+                alt="feature card"
+                sx={{ width: 200, height: 200 }}
+              />
+            </Grid>
+          </Grid>
+        </Link>
+      </CardActionArea>
+    </Card>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <Grid
+      container
+      xs={12}
+      spacing={2}
+      direction="row"
+      justifyContent="space-evenly"
+      alignItems="flex-start"
+      sx={{ marginTop: 3 }}
+    >
+      {FeatureList.map((props, idx) => (
+        <Grid item md={3} xs={12}>
+          <Feature key={idx} {...props} />
+        </Grid>
+      ))}
+    </Grid>
   );
 }
