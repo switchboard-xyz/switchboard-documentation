@@ -68,7 +68,7 @@ debug:
   inherit:
     default:
   script: export
-  stage: debug
+  stage: .post
 
 workflow:
   rules:
