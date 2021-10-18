@@ -33,10 +33,10 @@ html[data-theme="dark"] .navbar {
 html[data-theme="dark"] {
   --ifm-background-color: #232f3e;
 }
-/* 
+
 a:hover,
 a:visited,
 a:link,
 a:active {
   text-decoration: none;
-} */
+}

@@ -7,18 +7,19 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
-import { Box, Card, Typography, Grid, CardActionArea } from "@mui/material";
-
-type FeatureItem = {
-  title: string;
-  image: string;
-  description: JSX.Element;
-  linkTo: string;
-};
+import {
+  Box,
+  Card,
+  Typography,
+  Grid,
+  CardActionArea,
+  Paper,
+} from "@mui/material";
+import FeatureCard, { FeatureItem } from "./FeatureCard";
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Learn",
+    title: "Introduction",
     image: "/img/undraw_docusaurus_mountain.svg",
     description: (
       <>
@@ -29,78 +30,64 @@ const FeatureList: FeatureItem[] = [
     linkTo: "/docs",
   },
   {
+    title: "Architecture",
+    image: "/img/undraw_docusaurus_tree.svg",
+    description: (
+      <>
+        Learn about the different Switchboard components and how they interact
+      </>
+    ),
+    linkTo: "/docs/architecture",
+  },
+  {
+    title: "On-Chain",
+    image: "/img/undraw_docusaurus_react.svg",
+    description: (
+      <>
+        Learn how to consume Switchboard data on-chain and resolve data feed
+        updates
+      </>
+    ),
+    linkTo: "/docs/developers",
+  },
+  {
+    title: "Oracle",
+    image: "/img/undraw_docusaurus_react.svg",
+    description: (
+      <>Learn how to contribute to the network and process data feed updates</>
+    ),
+    linkTo: "/docs/developers",
+  },
+  {
+    title: "Develop",
+    image: "/img/undraw_docusaurus_react.svg",
+    description: <>Learn how to develop with Switchboard and use the APIs</>,
+    linkTo: "/docs/developers",
+  },
+  {
     title: "Explore",
     image: "/img/undraw_docusaurus_tree.svg",
     description: <>Explore what data Switchboard currently provides on-chain</>,
     linkTo: "https://switchboard.xyz/explorer",
   },
-  {
-    title: "Develop",
-    image: "/img/undraw_docusaurus_react.svg",
-    description: (
-      <>Learn how to develop with Switchboard and contribute to the network</>
-    ),
-    linkTo: "/docs/developers",
-  },
 ];
-
-function Feature({ title, image, description, linkTo }: FeatureItem) {
-  return (
-    <Card sx={{ backgroundColor: "inherit" }} elevation={2}>
-      <CardActionArea>
-        <Link to={linkTo} style={{ textDecoration: "none" }}>
-          <Grid
-            container
-            xs={12}
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            sx={{ marginTop: 3, textAlign: "center" }}
-          >
-            <Grid item>
-              <Typography
-                color="initial"
-                gutterBottom
-                variant="h5"
-                component="div"
-              >
-                {title}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="initial">
-                {description}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Box
-                component="img"
-                src={useBaseUrl(image)}
-                alt="feature card"
-                sx={{ width: 200, height: 200 }}
-              />
-            </Grid>
-          </Grid>
-        </Link>
-      </CardActionArea>
-    </Card>
-  );
-}
 
 export default function HomepageFeatures(): JSX.Element {
   return (
     <Grid
       container
       xs={12}
-      spacing={2}
+      lg={9}
+      md={10}
+      spacing={3}
       direction="row"
-      justifyContent="space-evenly"
-      alignItems="flex-start"
-      sx={{ marginTop: 3 }}
+      justifyContent="center"
+      alignItems="center"
+      sx={{ m: "auto" }}
     >
       {FeatureList.map((props, idx) => (
-        <Grid item md={3} xs={12}>
-          <Feature key={idx} {...props} />
+        <Grid item xs={11} md={4}>
+          <FeatureCard key={idx} {...props} />
         </Grid>
       ))}
     </Grid>

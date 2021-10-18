@@ -9,28 +9,39 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Box, Button, Divider, Paper, Typography } from "@mui/material";
 import useThemeContext from "@theme/hooks/useThemeContext";
+import {
+  createTheme,
+  ThemeProvider,
+  ThemeOptions,
+  responsiveFontSizes,
+} from "@mui/material/styles";
+import { deepPurple, teal } from "@mui/material/colors";
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs">
-            ◎ Switchboard Docs ◎
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+// export const themeOptions: ThemeOptions = {
+//   palette: {
+//     mode: "light",
+//     primary: {
+//       main: deepPurple[500],
+//     },
+//     secondary: {
+//       main: teal[500],
+//     },
+//     background: {
+//       default: "#232f3e",
+//       // paper: "#232f3e",
+//     },
+//   },
+// };
+// let theme = createTheme(themeOptions);
+// theme = responsiveFontSizes(theme);
 
 function HomePageHeader() {
   const { isDarkTheme } = useThemeContext();
+  const bgColor = isDarkTheme
+    ? "rgba(99, 91, 255, 0.75)"
+    : "rgba(99, 91, 255, 1)";
   return (
     <Paper
       sx={{
@@ -38,9 +49,7 @@ function HomePageHeader() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: isDarkTheme
-          ? "rgba(99, 91, 255, 0.75)"
-          : "rgba(99, 91, 255, 1)",
+        backgroundColor: bgColor,
       }}
       elevation={0}
       className={clsx("hero hero--primary", styles.heroBanner)}
@@ -57,6 +66,16 @@ function HomePageHeader() {
         allows anyone to publish on-chain data for smart contract developers to
         reliably build upon
       </Typography>
+      <Divider sx={{ my: 2 }} />
+      <Button
+        component={Link}
+        variant="contained"
+        to="/docs"
+        color="secondary"
+        size="large"
+      >
+        ◎ Switchboard Docs ◎
+      </Button>
     </Paper>
   );
 }
@@ -64,17 +83,24 @@ function HomePageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
+    // <ThemeProvider theme={theme}>
     <Layout
       title={`${siteConfig.title}`}
       description="Documentation for Switchboard V2"
     >
       <main>
-        <HomePageHeader />
-        <Box sx={{ m: 4 }}>
-          <Divider sx={{ my: 2 }} />
-          <HomepageFeatures />
-        </Box>
+        {/* <HomePageHeader /> */}
+        {/* <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            sx={{ my: 4 }}
+            // margin={2}
+          > */}
+        <HomepageFeatures />
+        <Divider sx={{ mt: 4 }} variant="middle" />
       </main>
     </Layout>
+    // </ThemeProvider>
   );
 }

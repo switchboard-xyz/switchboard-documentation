@@ -90,7 +90,17 @@ const config = {
             position: "left",
             label: "Docs",
           },
-          { to: "blog", label: "Blog", position: "left" },
+          {
+            to: "https://switchboard.xyz/explorer",
+            label: "Feeds",
+            position: "left",
+          },
+          {
+            to: "https://switchboardxyz.medium.com/",
+            label: "Blog",
+            position: "left",
+          },
+          // { to: "blog", label: "Blog", position: "left" },
           {
             type: "localeDropdown",
             position: "right",
@@ -165,8 +175,6 @@ const config = {
             ],
           },
         ],
-
-        copyright: `Copyright © ${new Date().getFullYear()} Switchboard Technology Labs, Inc.`,
       },
     }),
 };
