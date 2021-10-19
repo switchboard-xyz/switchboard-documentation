@@ -122,16 +122,16 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Overview",
-                to: "/docs/",
+                label: "Developer Resources",
+                to: "/docs/developer-resources",
               },
               {
                 label: "Rust API Docs",
-                to: "/docs/",
+                href: "https://docs.rs/switchboard-program/0.1.52/switchboard_program/",
               },
               {
                 label: "Client API Docs",
-                to: "/docs/",
+                href: "https://switchboard-xyz.github.io/switchboard-api/",
               },
             ],
           },
