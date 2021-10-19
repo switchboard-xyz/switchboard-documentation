@@ -7,6 +7,7 @@ title: Overview
 Diagram overview
 
 import { Box } from "@mui/material";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 export const ArchitectureDiagram = () => (
   <Box
@@ -19,7 +20,7 @@ export const ArchitectureDiagram = () => (
         "0px 3px 1px -2px pink,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
     }}
   >
-    <img src="/img/architecture/walkthrough-dark1.png" />
+    <img src={useBaseUrl("/img/architecture/walkthrough-dark1.png")} />
   </Box>
 );
 
