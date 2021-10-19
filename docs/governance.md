@@ -4,4 +4,4 @@ slug: /governance
 title: Governance
 ---
 
-# Overview
+# Governance

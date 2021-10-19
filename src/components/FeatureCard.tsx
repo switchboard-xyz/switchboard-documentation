@@ -28,6 +28,7 @@ export default function FeatureCard({
   linkTo,
 }: FeatureItem) {
   const { isDarkTheme } = useThemeContext();
+
   return (
     <Button component={Link} to={linkTo} sx={{ textTransform: "none" }}>
       <Card

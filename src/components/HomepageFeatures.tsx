@@ -45,11 +45,11 @@ const FeatureList: FeatureItem[] = [
     maxHeight: 150,
     description: (
       <>
-        Learn how to consume Switchboard data on-chain and resolve data feed
+        Learn how to read Switchboard data on-chain and resolve data feed
         updates
       </>
     ),
-    linkTo: "/docs/developer-resources",
+    linkTo: "/ocs/reading-a-data-feed",
   },
   {
     title: "Oracle",
@@ -57,7 +57,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>Learn how to contribute to the network and process data feed updates</>
     ),
-    linkTo: "/docs/run-an-oracle",
+    linkTo: "/docs/oracle",
   },
   {
     title: "Develop",

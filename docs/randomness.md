@@ -4,4 +4,4 @@ slug: /randomness
 title: On-Chain Randomness
 ---
 
-# Overview
+# On-Chain Randomness
