@@ -49,7 +49,7 @@ const FeatureList: FeatureItem[] = [
         updates
       </>
     ),
-    linkTo: "/docs/developers",
+    linkTo: "/docs/developer-resources",
   },
   {
     title: "Oracle",
@@ -57,13 +57,13 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>Learn how to contribute to the network and process data feed updates</>
     ),
-    linkTo: "/docs/developers",
+    linkTo: "/docs/run-an-oracle",
   },
   {
     title: "Develop",
     image: "/img/package.svg",
     description: <>Learn how to develop with Switchboard and use the APIs</>,
-    linkTo: "/docs/developers",
+    linkTo: "/docs/developer-resources",
   },
   {
     title: "Explore",
