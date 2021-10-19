@@ -89,14 +89,6 @@ export default function Home(): JSX.Element {
       description="Documentation for Switchboard V2"
     >
       <main>
-        {/* <HomePageHeader /> */}
-        {/* <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ my: 4 }}
-            // margin={2}
-          > */}
         <HomepageFeatures />
         <Box sx={{ height: 20 }} />
       </main>

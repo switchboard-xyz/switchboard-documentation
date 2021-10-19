@@ -35,6 +35,11 @@ export default function FeatureCard({
         sx={{
           backgroundColor: "inherit",
           width: "100%",
+          maxWidth: {
+            sm: "100%",
+            md: "100%",
+            lg: 600,
+          },
           minHeight: 200,
           textAlign: "center",
           borderRadius: 10,
@@ -55,7 +60,16 @@ export default function FeatureCard({
                 component="img"
                 src={useBaseUrl(image)}
                 alt="feature card"
-                sx={{ width: 200, height: 200 }}
+                sx={{
+                  width: {
+                    sm: 100,
+                    md: 200,
+                  },
+                  height: {
+                    sm: 100,
+                    md: 200,
+                  },
+                }}
               />
             </Grid>
             <Grid item xs={8}>
