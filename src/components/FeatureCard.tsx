@@ -15,6 +15,7 @@ import useThemeContext from "@theme/hooks/useThemeContext";
 export type FeatureItem = {
   title: string;
   image: string;
+  maxHeight?: number;
   description: JSX.Element;
   linkTo: string;
 };
@@ -32,7 +33,7 @@ export default function FeatureCard({
         sx={{
           backgroundColor: "inherit",
           width: "100%",
-          minHeight: 250,
+          minHeight: 200,
           textAlign: "center",
           borderRadius: 10,
           boxShadow:

@@ -20,7 +20,7 @@ import FeatureCard, { FeatureItem } from "./FeatureCard";
 const FeatureList: FeatureItem[] = [
   {
     title: "Introduction",
-    image: "/img/undraw_docusaurus_mountain.svg",
+    image: "/img/information.svg",
     description: (
       <>
         Learn about Switchboard and how it enables the community to dictate what
@@ -31,7 +31,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Architecture",
-    image: "/img/undraw_docusaurus_tree.svg",
+    image: "/img/blueprint.svg",
     description: (
       <>
         Learn about the different Switchboard components and how they interact
@@ -41,7 +41,8 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "On-Chain",
-    image: "/img/undraw_docusaurus_react.svg",
+    image: "/img/solana-gradient.svg",
+    maxHeight: 150,
     description: (
       <>
         Learn how to consume Switchboard data on-chain and resolve data feed
@@ -52,7 +53,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Oracle",
-    image: "/img/undraw_docusaurus_react.svg",
+    image: "/img/atom.svg",
     description: (
       <>Learn how to contribute to the network and process data feed updates</>
     ),
@@ -60,18 +61,19 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Develop",
-    image: "/img/undraw_docusaurus_react.svg",
+    image: "/img/package.svg",
     description: <>Learn how to develop with Switchboard and use the APIs</>,
     linkTo: "/docs/developers",
   },
   {
     title: "Explore",
-    image: "/img/undraw_docusaurus_tree.svg",
+    image: "/img/search.svg",
     description: <>Explore what data Switchboard currently provides on-chain</>,
     linkTo: "https://switchboard.xyz/explorer",
   },
 ];
 
+// TO DO: Vertical align cards
 export default function HomepageFeatures(): JSX.Element {
   return (
     <Grid
