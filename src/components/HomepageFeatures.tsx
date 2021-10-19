@@ -85,10 +85,11 @@ export default function HomepageFeatures(): JSX.Element {
       direction="row"
       justifyContent="center"
       alignItems="center"
+      display="flex"
       sx={{ m: "auto", textAlign: "center" }}
     >
       {FeatureList.map((props, idx) => (
-        <Grid item sm={11} md={6} xl={4}>
+        <Grid item sm={12} md={6} xl={4}>
           <FeatureCard key={props.title} {...props} />
         </Grid>
       ))}

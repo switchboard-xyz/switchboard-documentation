@@ -35,18 +35,24 @@ export default function FeatureCard({
       to={linkTo}
       sx={{
         textTransform: "none",
+        width: "100%",
+        height: "100%",
       }}
     >
       <Card
         sx={{
           backgroundColor: "inherit",
           width: "100%",
+          height: "100%",
           maxWidth: {
             sm: "100%",
             md: "100%",
             lg: 600,
           },
-          minHeight: 200,
+          minHeight: {
+            sm: "100%",
+            md: 200,
+          },
           textAlign: "center",
           borderRadius: 10,
           "&:hover": {
@@ -61,27 +67,28 @@ export default function FeatureCard({
             container
             alignItems="center"
             justifyContent="center"
-            xs={12}
             spacing={2}
           >
-            <Grid item xs={6} md={4}>
+            <Grid item md={4}>
               <Box
                 component="img"
                 src={useBaseUrl(image)}
                 alt="feature card"
                 sx={{
                   width: {
+                    xs: 50,
                     sm: 100,
                     md: 200,
                   },
                   height: {
+                    xs: 50,
                     sm: 100,
                     md: 200,
                   },
                 }}
               />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={8} sm={8}>
               <Typography color="initial" gutterBottom variant="h5">
                 {title}
               </Typography>
