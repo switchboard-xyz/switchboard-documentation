@@ -30,7 +30,13 @@ export default function FeatureCard({
   const { isDarkTheme } = useThemeContext();
 
   return (
-    <Button component={Link} to={linkTo} sx={{ textTransform: "none" }}>
+    <Button
+      component={Link}
+      to={linkTo}
+      sx={{
+        textTransform: "none",
+      }}
+    >
       <Card
         sx={{
           backgroundColor: "inherit",
@@ -43,6 +49,9 @@ export default function FeatureCard({
           minHeight: 200,
           textAlign: "center",
           borderRadius: 10,
+          "&:hover": {
+            backgroundColor: "rgba(99, 91, 255, 0.2)",
+          },
           boxShadow:
             "0px 3px 1px -2px pink,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
         }}
