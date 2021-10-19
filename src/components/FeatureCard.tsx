@@ -3,6 +3,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import Link from "@docusaurus/Link";
 import {
   Box,
+  Button,
   Card,
   Typography,
   Grid,
@@ -28,7 +29,7 @@ export default function FeatureCard({
 }: FeatureItem) {
   const { isDarkTheme } = useThemeContext();
   return (
-    <Link to={linkTo}>
+    <Button component={Link} to={linkTo} sx={{ textTransform: "none" }}>
       <Card
         sx={{
           backgroundColor: "inherit",
@@ -41,7 +42,13 @@ export default function FeatureCard({
         }}
       >
         <CardContent>
-          <Grid container alignItems="center" justifyContent="center" xs={12}>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            xs={12}
+            spacing={2}
+          >
             <Grid item xs={6} md={4}>
               <Box
                 component="img"
@@ -51,15 +58,9 @@ export default function FeatureCard({
               />
             </Grid>
             <Grid item xs={8}>
-              <Typography
-                color="initial"
-                gutterBottom
-                variant="h5"
-                component="div"
-              >
+              <Typography color="initial" gutterBottom variant="h5">
                 {title}
               </Typography>
-
               <Typography variant="body2" color="initial">
                 {description}
               </Typography>
@@ -67,6 +68,6 @@ export default function FeatureCard({
           </Grid>
         </CardContent>
       </Card>
-    </Link>
+    </Button>
   );
 }
