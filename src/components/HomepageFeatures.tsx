@@ -49,7 +49,7 @@ const FeatureList: FeatureItem[] = [
         updates
       </>
     ),
-    linkTo: "/ocs/reading-a-data-feed",
+    linkTo: "/docs/reading-a-data-feed",
   },
   {
     title: "Oracle",
