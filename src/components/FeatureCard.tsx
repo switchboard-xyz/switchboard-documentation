@@ -39,7 +39,7 @@ export default function FeatureCard({
           textAlign: "center",
           borderRadius: 10,
           boxShadow:
-            "0px 3px 1px -2px red,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
+            "0px 3px 1px -2px pink,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
         }}
       >
         <CardContent>

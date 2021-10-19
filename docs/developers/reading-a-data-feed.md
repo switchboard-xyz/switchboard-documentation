@@ -14,7 +14,30 @@ import TabItem from '@theme/TabItem';
 <TabItem value="ts" label="Typescript" default>
 
 ```ts
-console.log("Hello, world!");
+import {
+  AggregatorState,
+  parseAggregatorAccountData,
+} from "@switchboard-xyz/switchboard-api";
+
+// your code here
+
+const state: AggregatorState = await parseAggregatorAccountData(
+  connection,
+  dataFeedPubkey
+);
+
+console.log(state?.currentRoundResult);
+
+// RoundResult{
+//     numSuccess: number;
+//     numError: number;
+//     result: number;
+//     roundOpenSlot: number;
+//     roundOpenTimestamp: number;
+//     minResponse: number;
+//     maxResponse: number;
+//     medians: number[];
+// }
 ```
 
 </TabItem>
