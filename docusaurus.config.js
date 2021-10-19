@@ -7,9 +7,9 @@ const config = {
   tagline: "Community curated lightspeed data feeds on-chain",
   url:
     process.env.NODE_ENV === "production"
-      ? "https://switchboard-xyz.gitlab.io"
+      ? "https://docs.switchboard.xyz"
       : "http://localhost",
-  baseUrl: process.env.NODE_ENV === "production" ? "/v2/" : "/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
