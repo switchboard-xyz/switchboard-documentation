@@ -38,7 +38,6 @@ export default function FeatureCard({
           boxShadow:
             "0px 3px 1px -2px red,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
         }}
-        elevation={isDarkTheme ? 15 : 5}
       >
         <CardContent>
           <Grid container alignItems="center" justifyContent="center" xs={12}>

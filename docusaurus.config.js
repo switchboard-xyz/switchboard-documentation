@@ -30,14 +30,6 @@ const config = {
               ? process.env.CI_PROJECT_URL + "/-/edit/main/"
               : "/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            process.env.NODE_ENV === "production"
-              ? process.env.CI_PROJECT_URL + "/-/edit/main/"
-              : "/",
-        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },

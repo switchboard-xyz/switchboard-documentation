@@ -87,7 +87,7 @@ export default function HomepageFeatures(): JSX.Element {
     >
       {FeatureList.map((props, idx) => (
         <Grid item xs={11} md={4}>
-          <FeatureCard key={idx} {...props} />
+          <FeatureCard key={props.title} {...props} />
         </Grid>
       ))}
     </Grid>

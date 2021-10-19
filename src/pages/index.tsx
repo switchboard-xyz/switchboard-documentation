@@ -98,7 +98,7 @@ export default function Home(): JSX.Element {
             // margin={2}
           > */}
         <HomepageFeatures />
-        <Divider sx={{ mt: 4 }} variant="middle" />
+        <Box sx={{ height: 20 }} />
       </main>
     </Layout>
     // </ThemeProvider>
