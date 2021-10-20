@@ -7,16 +7,13 @@ import {
   Card,
   Typography,
   Grid,
-  CardActionArea,
   CardContent,
-  Paper,
 } from "@mui/material";
 import useThemeContext from "@theme/hooks/useThemeContext";
 
 export type FeatureItem = {
   title: string;
   image: string;
-  maxHeight?: number;
   description: JSX.Element;
   linkTo: string;
 };
@@ -35,6 +32,7 @@ export default function FeatureCard({
       to={linkTo}
       sx={{
         textTransform: "none",
+        textDecoration: "none",
         width: "100%",
         height: "100%",
       }}

@@ -1,20 +1,5 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 import React from "react";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import Link from "@docusaurus/Link";
-import {
-  Box,
-  Card,
-  Typography,
-  Grid,
-  CardActionArea,
-  Paper,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import FeatureCard, { FeatureItem } from "./FeatureCard";
 
 const FeatureList: FeatureItem[] = [
@@ -42,7 +27,6 @@ const FeatureList: FeatureItem[] = [
   {
     title: "On-Chain",
     image: "/img/solana-gradient.svg",
-    maxHeight: 150,
     description: (
       <>
         Learn how to read Switchboard data on-chain and resolve data feed
