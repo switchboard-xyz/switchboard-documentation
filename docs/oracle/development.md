@@ -13,11 +13,15 @@ You will need a Solana keypair with an active balanace. You can run the followin
 solana-keygen new --outfile node-keypair.json
 ```
 
+:::tip
+
 If you are on devnet, you can request some free SOL for testing purposes
 
 ```bash
 solana airdrop 5 node-keypair.json
 ```
+
+:::
 
 ## Docker
 
