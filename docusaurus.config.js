@@ -65,7 +65,7 @@ const config = {
       // Only for code blocks
       prism: {
         theme: require("prism-react-renderer/themes/shadesOfPurple"),
-        additionalLanguages: ["rust", "toml"],
+        additionalLanguages: ["rust", "toml", "docker", "bash", "yaml"],
       },
       navbar: {
         title: "Switchboard",
