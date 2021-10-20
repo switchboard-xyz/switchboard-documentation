@@ -23,11 +23,10 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
+          // Automatically converts npm codeblocks to yarn
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
-
           editUrl:
             process.env.NODE_ENV === "production"
               ? process.env.CI_PROJECT_URL + "/-/edit/main/"
@@ -66,12 +65,11 @@ const config = {
       // Only for code blocks
       prism: {
         theme: require("prism-react-renderer/themes/shadesOfPurple"),
-        // darkTheme: require("prism-react-renderer/themes/github"),
         additionalLanguages: ["rust", "toml"],
       },
       navbar: {
         title: "Switchboard",
-        hideOnScroll: true,
+        hideOnScroll: false,
         logo: {
           alt: "Switchboard Logo",
           src: "img/switchboard_purple.png",
@@ -99,7 +97,6 @@ const config = {
             label: "Blog",
             position: "left",
           },
-          // { to: "blog", label: "Blog", position: "left" },
           {
             type: "localeDropdown",
             position: "right",
