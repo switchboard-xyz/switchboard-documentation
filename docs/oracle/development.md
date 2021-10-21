@@ -31,7 +31,7 @@ To run an oracle in a development environment, you will need to install [Docker-
 version: "3.3"
 services:
   switchboard:
-    image: "switchboardlabs/node:staging"
+    image: "switchboardlabs/node:dev-v2"
     network_mode: host
     restart: always
     secrets:
@@ -39,9 +39,11 @@ services:
     environment:
       - LIVE=1
       - CLUSTER=devnet
-      - FULFILLMENT_MANAGER_KEY=<YOUR_FULFILLMENT_MANAGER_PUBKEY>
-      - FULFILLMENT_MANAGER_HEARTBEAT_AUTH_KEY=<OPTIONAL AUTH PUBKEY>
+      - HEARTBEAT_INTERVAL=15 # Seconds
+      - ORACLE_KEY=${ORACLE_KEY}
       # - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT> # OPTIONAL
+    volumes:
+      - ./configs.json:/configs.json
 secrets:
   PAYER_SECRETS:
     file: ./node-keypair.json
