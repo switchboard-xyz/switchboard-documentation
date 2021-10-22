@@ -2,6 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import FeatureCard, { FeatureItem } from "./FeatureCard";
 import Theme from "../theme";
+import useThemeContext from "@theme/hooks/useThemeContext";
 
 const FeatureList: FeatureItem[] = [
   {
@@ -60,8 +61,9 @@ const FeatureList: FeatureItem[] = [
 
 // TO DO: Vertical align cards
 export default function HomepageFeatures(): JSX.Element {
+  const { isDarkTheme } = useThemeContext();
   return (
-    <Theme>
+    <Theme isDarkTheme={isDarkTheme}>
       <Grid
         container
         xs={12}
