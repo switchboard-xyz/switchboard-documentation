@@ -42,8 +42,12 @@ const darkThemeOptions: ThemeOptions = {
   },
 };
 
-const lightTheme = responsiveFontSizes(createTheme(lightThemeOptions));
-const darkTheme = responsiveFontSizes(createTheme(darkThemeOptions));
+const lightTheme = responsiveFontSizes(
+  createTheme(lightThemeOptions, { index: 1 })
+);
+const darkTheme = responsiveFontSizes(
+  createTheme(darkThemeOptions, { index: 1 })
+);
 
 export type ThemeProps = {
   children?: React.ReactChild | React.ReactChild[];

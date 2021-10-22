@@ -13,15 +13,10 @@ export type FeatureItem = {
 
 // TO DO: Vertical align cards
 export default function HomepageFeatures(): JSX.Element {
-  const { isDarkTheme, setLightTheme, setDarkTheme } = useThemeContext();
-  const [isDark, setDark] = useState(isDarkTheme);
-
-  useEffect(() => {
-    setDark(isDarkTheme);
-  }, [isDarkTheme]);
+  const { isDarkTheme } = useThemeContext();
 
   return (
-    <Theme isDarkTheme={isDark}>
+    <Theme isDarkTheme={isDarkTheme}>
       <Grid
         container
         xs={12}
@@ -36,11 +31,7 @@ export default function HomepageFeatures(): JSX.Element {
       >
         {FeatureList.map((props, idx) => (
           <Grid item sm={12} md={6} xl={4}>
-            <FeatureCard
-              key={props.title}
-              {...props}
-              isDarkTheme={isDark} // re-renders when this value changes
-            />
+            <FeatureCard key={props.title} {...props} />
           </Grid>
         ))}
       </Grid>
