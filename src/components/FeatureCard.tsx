@@ -9,6 +9,7 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
+import useThemeContext from "@theme/hooks/useThemeContext";
 
 export type FeatureItem = {
   title: string;

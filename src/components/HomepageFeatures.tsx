@@ -61,27 +61,24 @@ const FeatureList: FeatureItem[] = [
 
 // TO DO: Vertical align cards
 export default function HomepageFeatures(): JSX.Element {
-  const { isDarkTheme } = useThemeContext();
   return (
-    <Theme isDarkTheme={isDarkTheme}>
-      <Grid
-        container
-        xs={12}
-        lg={9}
-        md={10}
-        spacing={3}
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        display="flex"
-        sx={{ m: "auto", textAlign: "center" }}
-      >
-        {FeatureList.map((props, idx) => (
-          <Grid item sm={12} md={6} xl={4}>
-            <FeatureCard key={props.title} {...props} />
-          </Grid>
-        ))}
-      </Grid>
-    </Theme>
+    <Grid
+      container
+      xs={12}
+      lg={9}
+      md={10}
+      spacing={3}
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      display="flex"
+      sx={{ m: "auto", textAlign: "center" }}
+    >
+      {FeatureList.map((props, idx) => (
+        <Grid item sm={12} md={6} xl={4}>
+          <FeatureCard key={props.title} {...props} />
+        </Grid>
+      ))}
+    </Grid>
   );
 }

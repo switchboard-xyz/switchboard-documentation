@@ -34,7 +34,7 @@ html[data-theme="dark"] {
   --ifm-background-color: #232f3e;
 }
 
-/* html[data-theme="dark"] .main {
+/* main[data-theme="dark"] {
   color: #ffffff;
 } */
 
