@@ -14,12 +14,10 @@ export default function Home(): JSX.Element {
       title={`${siteConfig.title}`}
       description="Documentation for Switchboard V2"
     >
-      <Theme>
-        <main>
-          <HomepageFeatures />
-          <Box sx={{ height: 20 }} />
-        </main>
-      </Theme>
+      <main>
+        <HomepageFeatures />
+        <Box sx={{ height: 20 }} />
+      </main>
     </Layout>
   );
 }
