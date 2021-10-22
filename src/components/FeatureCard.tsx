@@ -10,12 +10,10 @@ import {
   CardContent,
 } from "@mui/material";
 import useThemeContext from "@theme/hooks/useThemeContext";
+import { FeatureItem } from "./HomepageFeatures";
 
-export type FeatureItem = {
-  title: string;
-  image: string;
-  description: JSX.Element;
-  linkTo: string;
+export type FeatureCardProps = FeatureItem & {
+  isDarkTheme?: boolean;
 };
 
 export default function FeatureCard({
@@ -23,7 +21,7 @@ export default function FeatureCard({
   image,
   description,
   linkTo,
-}: FeatureItem) {
+}: FeatureCardProps) {
   return (
     <Button
       component={Link}

@@ -1,8 +1,15 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import FeatureCard, { FeatureItem } from "./FeatureCard";
+import FeatureCard from "./FeatureCard";
 import Theme from "../theme";
 import useThemeContext from "@theme/hooks/useThemeContext";
+
+export type FeatureItem = {
+  title: string;
+  image: string;
+  description: JSX.Element;
+  linkTo: string;
+};
 
 const FeatureList: FeatureItem[] = [
   {
@@ -61,24 +68,32 @@ const FeatureList: FeatureItem[] = [
 
 // TO DO: Vertical align cards
 export default function HomepageFeatures(): JSX.Element {
+  const { isDarkTheme } = useThemeContext();
+
   return (
-    <Grid
-      container
-      xs={12}
-      lg={9}
-      md={10}
-      spacing={3}
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      display="flex"
-      sx={{ m: "auto", textAlign: "center" }}
-    >
-      {FeatureList.map((props, idx) => (
-        <Grid item sm={12} md={6} xl={4}>
-          <FeatureCard key={props.title} {...props} />
-        </Grid>
-      ))}
-    </Grid>
+    <Theme isDarkTheme={isDarkTheme}>
+      <Grid
+        container
+        xs={12}
+        lg={9}
+        md={10}
+        spacing={3}
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        display="flex"
+        sx={{ m: "auto", textAlign: "center" }}
+      >
+        {FeatureList.map((props, idx) => (
+          <Grid item sm={12} md={6} xl={4}>
+            <FeatureCard
+              key={props.title}
+              {...props}
+              // isDarkTheme={isDarkTheme} // re-renders when this value changes
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </Theme>
   );
 }
