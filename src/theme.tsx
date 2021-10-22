@@ -42,8 +42,8 @@ const darkThemeOptions: ThemeOptions = {
   },
 };
 
-let lightTheme = createTheme(lightThemeOptions);
-let darkTheme = createTheme(darkThemeOptions);
+const lightTheme = responsiveFontSizes(createTheme(lightThemeOptions));
+const darkTheme = responsiveFontSizes(createTheme(darkThemeOptions));
 
 export type ThemeProps = {
   children?: React.ReactChild | React.ReactChild[];
@@ -52,13 +52,7 @@ export type ThemeProps = {
 export default function Theme(props: ThemeProps): JSX.Element {
   const { isDarkTheme } = useThemeContext();
   return (
-    <ThemeProvider
-      theme={
-        isDarkTheme
-          ? responsiveFontSizes(darkTheme)
-          : responsiveFontSizes(lightTheme)
-      }
-    >
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       {props.children}
     </ThemeProvider>
   );
