@@ -87,7 +87,7 @@ export default function FeatureCard({
               />
             </Grid>
             <Grid item xs={8} sm={8}>
-              <Typography color="initial" gutterBottom variant="h5">
+              <Typography gutterBottom variant="h5">
                 {title}
               </Typography>
               <Typography variant="body2" color="initial">
