@@ -46,7 +46,7 @@ let lightTheme = createTheme(lightThemeOptions);
 let darkTheme = createTheme(darkThemeOptions);
 
 export type ThemeProps = {
-  children?: JSX.Element;
+  children?: React.ReactChild | React.ReactChild[];
 };
 
 export default function Theme(props: ThemeProps): JSX.Element {
