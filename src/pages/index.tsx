@@ -14,10 +14,8 @@ export default function Home(): JSX.Element {
       description="Documentation for Switchboard V2"
     >
       <main>
-        <Theme>
-          <HomepageFeatures />
-          <Box sx={{ height: 20 }} />
-        </Theme>
+        <HomepageFeatures />
+        <Box sx={{ height: 20 }} />
       </main>
     </Layout>
   );

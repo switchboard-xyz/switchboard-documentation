@@ -13,7 +13,7 @@ import useThemeContext from "@theme/hooks/useThemeContext";
 import { FeatureItem } from "./HomepageFeatures";
 
 export type FeatureCardProps = FeatureItem & {
-  isDarkTheme?: boolean;
+  isDarkTheme: boolean;
 };
 
 export default function FeatureCard({
@@ -21,6 +21,7 @@ export default function FeatureCard({
   image,
   description,
   linkTo,
+  isDarkTheme,
 }: FeatureCardProps) {
   return (
     <Button

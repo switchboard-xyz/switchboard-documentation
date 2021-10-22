@@ -89,7 +89,7 @@ export default function HomepageFeatures(): JSX.Element {
             <FeatureCard
               key={props.title}
               {...props}
-              // isDarkTheme={isDarkTheme} // re-renders when this value changes
+              isDarkTheme={isDarkTheme} // re-renders when this value changes
             />
           </Grid>
         ))}
