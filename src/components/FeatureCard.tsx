@@ -9,7 +9,6 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
-import useThemeContext from "@theme/hooks/useThemeContext";
 
 export type FeatureItem = {
   title: string;
@@ -24,8 +23,6 @@ export default function FeatureCard({
   description,
   linkTo,
 }: FeatureItem) {
-  const { isDarkTheme } = useThemeContext();
-
   return (
     <Button
       component={Link}
@@ -87,10 +84,10 @@ export default function FeatureCard({
               />
             </Grid>
             <Grid item xs={8} sm={8}>
-              <Typography gutterBottom variant="h5">
+              <Typography color="text.primary" gutterBottom variant="h5">
                 {title}
               </Typography>
-              <Typography variant="body2" color="initial">
+              <Typography color="text.primary" variant="body2">
                 {description}
               </Typography>
             </Grid>

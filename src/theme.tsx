@@ -26,7 +26,7 @@ const lightThemeOptions: ThemeOptions = {
       // paper: "#232f3e",
     },
     text: {
-      primary: "#000000",
+      primary: "rgb(0,0,0)",
     },
   },
 };
@@ -37,7 +37,7 @@ const darkThemeOptions: ThemeOptions = {
       main: deepPurple[500],
     },
     text: {
-      primary: "#FFFFFF",
+      primary: "rgb(255,255,255)",
     },
   },
 };
