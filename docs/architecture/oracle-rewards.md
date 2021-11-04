@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-slug: /oracle-rewards
+slug: /a/oracle-rewards
 ---
 
 # Oracle Rewards

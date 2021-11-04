@@ -8,11 +8,13 @@ slug: /terminology
 
 ## Data Feed
 
-Data feeds are the centerpiece of switchboard and contain the job definitions and configuration parameters that dictate when a result is accepted. Also known as Aggregators since they aggregate oracle responses and output a single result.
+Data feeds are the centerpiece of switchboard and contain the job definitions and configuration parameters that dictate when a result is accepted.
+
+Also known as Aggregators since they aggregate oracle responses and output a single result
 
 ## Oracle
 
-Node between the internet and the solana blockchain responsible for fuliflling data feed updates.
+Node between the internet and the solana blockchain responsible for fuliflling data feed updates
 
 ## Lease Contract
 

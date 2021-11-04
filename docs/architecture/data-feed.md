@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
-slug: /data-feed
+sidebar_position: 5
+slug: /a/data-feed
 ---
 
 # Data Feed

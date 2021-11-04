@@ -1,6 +1,6 @@
 ---
-sidebar_position: 4
-slug: /lease-contract
+sidebar_position: 6
+slug: /a/lease-contract
 ---
 
 # Lease Contract
