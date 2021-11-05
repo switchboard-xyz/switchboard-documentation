@@ -1,13 +1,14 @@
 ---
 sidebar_position: 5
-id: development
 ---
 
-# Development
+# Local Oracle
+
+You can run an oracle locally and assign it to your own oracle queue to test how your porgram may operate in production. Mainnet oracles should always be run on a cloud provider with redundancy to avoid unintentional slashing.
 
 ## Solana Keypair
 
-You will need a Solana keypair with an active balanace. You can run the following command to generate a new keypair.
+You will need a Solana keypair with an active balanace.
 
 ```bash
 solana-keygen new --outfile node-keypair.json
@@ -15,11 +16,7 @@ solana-keygen new --outfile node-keypair.json
 
 :::tip
 
-If you are on devnet, you can request some free SOL for testing purposes
-
-```bash
-solana airdrop 5 node-keypair.json
-```
+If you are on devnet, you can request some free SOL: `solana airdrop 5 node-keypair.json`
 
 :::
 
