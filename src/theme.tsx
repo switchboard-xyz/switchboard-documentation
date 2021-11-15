@@ -1,3 +1,7 @@
+/**
+ * Attempt at using material-ui theme on top of docusaurus theme
+ */
+
 import React from "react";
 import useThemeContext from "@theme/hooks/useThemeContext";
 import "@fontsource/roboto/300.css";
