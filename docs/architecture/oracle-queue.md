@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-slug: /a/oracle-queue
+slug: /architecture/oracle-queue
 ---
 
 # Oracle Queue

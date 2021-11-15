@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-slug: /a/crank
+slug: /architecture/crank
 ---
 
 # The Crank

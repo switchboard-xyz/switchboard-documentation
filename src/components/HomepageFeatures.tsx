@@ -59,7 +59,7 @@ const FeatureList: FeatureItem[] = [
         Learn about the different Switchboard components and how they interact
       </>
     ),
-    linkTo: "/docs/a",
+    linkTo: "/docs/architecture",
   },
   {
     title: "On-Chain",

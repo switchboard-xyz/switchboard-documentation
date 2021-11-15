@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-slug: /a/data-feed
+slug: /architecture/data-feed
 ---
 
 # Data Feed
