@@ -14,58 +14,29 @@ import TabItem from '@theme/TabItem';
 <TabItem value="ts" label="Typescript" default>
 
 ```ts
-import {
-  AggregatorState,
-  parseAggregatorAccountData,
-} from "@switchboard-xyz/switchboard-api";
+import { AggregatorAccount } from "@switchboard-xyz/switchboard-v2";
+import { Big } from "big.js";
 
-// your code here
+const aggregatorAccount: AggregatorAccount;
+const result: Big = await aggregatorAccount.getLatestValue();
 
-const state: AggregatorState = await parseAggregatorAccountData(
-  connection,
-  dataFeedPubkey
-);
-
-console.log(state?.currentRoundResult);
-
-// RoundResult{
-//     numSuccess: number;
-//     numError: number;
-//     result: number;
-//     roundOpenSlot: number;
-//     roundOpenTimestamp: number;
-//     minResponse: number;
-//     maxResponse: number;
-//     medians: number[];
-// }
+console.log(result.toNumber());
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
 ```rust
-use switchboard_program;
-use switchboard_program::{AggregatorState, RoundResult};
+use anchor_lang::prelude::AccountInfo;
+use switchboard_aggregator::{get_aggregator_result, SwitchboardDecimal};
 
-// your code here
+let accounts_iter = &mut accounts.iter();
+let aggregator = next_account_info(accounts_iter)?; // AccountInfo
 
-let aggregator: AggregatorState = switchboard_program::get_aggregator(
-    switchboard_feed_account // &AccountInfo
-)?;
-let round_result: RoundResult = switchboard_program::get_aggregator_result(
-    &aggregator
-)?;
+let result: SwitchboardDecimal = get_aggregator_result(aggregator)?;
+let decimal: f64 = (&result).try_into().unwrap();
 
-// pub struct RoundResult {
-//     pub num_success: Option<i32>,
-//     pub num_error: Option<i32>,
-//     pub result: Option<f64>,
-//     pub round_open_slot: Option<u64>,
-//     pub round_open_timestamp: Option<i64>,
-//     pub min_response: Option<f64>,
-//     pub max_response: Option<f64>,
-//     pub medians: Vec<f64>,
-// }
+println!("Current feed result is {}!", decimal);
 ```
 
 </TabItem>
