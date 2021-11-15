@@ -49,7 +49,7 @@ const FeatureList: FeatureItem[] = [
         data lives on-chain
       </>
     ),
-    linkTo: "/docs",
+    linkTo: "/about",
   },
   {
     title: "Architecture",
@@ -59,7 +59,7 @@ const FeatureList: FeatureItem[] = [
         Learn about the different Switchboard components and how they interact
       </>
     ),
-    linkTo: "/docs/architecture",
+    linkTo: "/architecture",
   },
   {
     title: "On-Chain",
@@ -70,7 +70,7 @@ const FeatureList: FeatureItem[] = [
         updates
       </>
     ),
-    linkTo: "/docs/reading-a-data-feed",
+    linkTo: "/reading-a-data-feed",
   },
   {
     title: "Oracle",
@@ -78,13 +78,13 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>Learn how to contribute to the network and process data feed updates</>
     ),
-    linkTo: "/docs/oracle",
+    linkTo: "/oracle",
   },
   {
     title: "Develop",
     image: "/img/package.svg",
     description: <>Learn how to develop with Switchboard and use the APIs</>,
-    linkTo: "/docs/developer-resources",
+    linkTo: "/developers",
   },
   {
     title: "Explore",

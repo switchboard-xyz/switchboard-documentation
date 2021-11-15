@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /developer-resources
+slug: /developers
 ---
 
 # Developer Resources

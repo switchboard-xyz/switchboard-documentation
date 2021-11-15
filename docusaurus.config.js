@@ -22,6 +22,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Automatically converts npm codeblocks to yarn
           remarkPlugins: [
@@ -120,7 +121,7 @@ const config = {
             items: [
               {
                 label: "Developer Resources",
-                to: "/docs/developer-resources",
+                to: "/developers",
               },
               {
                 label: "Rust API Docs",
