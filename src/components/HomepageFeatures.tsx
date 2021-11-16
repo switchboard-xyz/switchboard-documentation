@@ -13,6 +13,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <Grid
       container
+      item
       xs={11}
       lg={9}
       md={10}
@@ -24,8 +25,8 @@ export default function HomepageFeatures(): JSX.Element {
       sx={{ m: "auto", textAlign: "center" }}
     >
       {FeatureList.map((props, idx) => (
-        <Grid item sm={12} md={6} xl={4}>
-          <FeatureCard key={props.title} {...props} />
+        <Grid item key={props.title} sm={12} md={6} xl={4}>
+          <FeatureCard {...props} isDarkTheme={isDarkTheme} />
         </Grid>
       ))}
     </Grid>
