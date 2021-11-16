@@ -12,14 +12,18 @@ import {
 import { FeatureItem } from "./HomepageFeatures";
 import useThemeContext from "@theme/hooks/useThemeContext";
 
-export type FeatureCardProps = FeatureItem;
+const XS_ICON = 75;
+const SM_ICON = 100;
+const MD_ICON = 100;
+const LG_ICON = 125;
+const XL_ICON = 150;
 
 export default function FeatureCard({
   title,
   image,
   description,
   linkTo,
-}: FeatureCardProps) {
+}: FeatureItem) {
   const { isDarkTheme } = useThemeContext();
   return (
     <Button
@@ -39,13 +43,14 @@ export default function FeatureCard({
           width: "100%",
           height: "100%",
           maxWidth: {
-            sm: "100%",
             md: "100%",
-            lg: 600,
+            lg: 500,
           },
           minHeight: {
             sm: "100%",
-            md: 200,
+            md: MD_ICON,
+            lg: LG_ICON,
+            xl: XL_ICON,
           },
           textAlign: "center",
           borderRadius: 10,
@@ -69,15 +74,19 @@ export default function FeatureCard({
                 src={useBaseUrl(image)}
                 alt="feature card"
                 sx={{
-                  width: {
-                    xs: 50,
-                    sm: 100,
-                    md: 200,
-                  },
                   height: {
-                    xs: 50,
-                    sm: 100,
-                    md: 200,
+                    xs: XS_ICON,
+                    sm: SM_ICON,
+                    md: MD_ICON,
+                    lg: LG_ICON,
+                    xl: XL_ICON,
+                  },
+                  width: {
+                    xs: XS_ICON,
+                    sm: SM_ICON,
+                    md: MD_ICON,
+                    lg: LG_ICON,
+                    xl: XL_ICON,
                   },
                 }}
               />

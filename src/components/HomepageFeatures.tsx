@@ -13,7 +13,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <Grid
       container
-      xs={12}
+      xs={11}
       lg={9}
       md={10}
       spacing={3}
