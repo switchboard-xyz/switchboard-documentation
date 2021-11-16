@@ -26,16 +26,7 @@ export default function FeatureCard({
 }: FeatureItem) {
   const { isDarkTheme } = useThemeContext();
   return (
-    <Button
-      component={Link}
-      to={linkTo}
-      sx={{
-        textTransform: "none",
-        textDecoration: "none",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <Link to={linkTo}>
       <Card
         sx={{
           backgroundColor: isDarkTheme ? "rgba(238, 238, 238, 0.1)" : "inherit",
@@ -100,6 +91,6 @@ export default function FeatureCard({
           </Grid>
         </CardContent>
       </Card>
-    </Button>
+    </Link>
   );
 }
