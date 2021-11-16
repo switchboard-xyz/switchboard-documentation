@@ -29,7 +29,9 @@ export default function FeatureCard({
     <Link to={linkTo}>
       <Card
         sx={{
-          backgroundColor: isDarkTheme ? "rgba(238, 238, 238, 0.1)" : "inherit",
+          backgroundColor: isDarkTheme
+            ? "rgba(238, 238, 238, 0.1)"
+            : "transparent",
           color: isDarkTheme ? "rgb(225, 229, 235)" : "rgb(23, 23, 23)",
           width: "100%",
           height: "100%",
