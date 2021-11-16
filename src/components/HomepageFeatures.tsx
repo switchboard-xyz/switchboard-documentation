@@ -26,7 +26,7 @@ export default function HomepageFeatures(): JSX.Element {
     >
       {FeatureList.map((props, idx) => (
         <Grid item key={props.title} sm={12} md={6} xl={4}>
-          <FeatureCard {...props} isDarkTheme={isDarkTheme} />
+          <FeatureCard {...props} />
         </Grid>
       ))}
     </Grid>
