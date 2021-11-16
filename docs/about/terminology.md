@@ -6,32 +6,30 @@ slug: /terminology
 
 # Terminology
 
-## Data Feed
+## Oracle Queue
 
-Data feeds are the centerpiece of switchboard and contain the job definitions and configuration parameters that dictate when a result is accepted.
-
-Also known as Aggregators since they aggregate oracle responses and output a single result
+The orchestrator behind a switchboard network and controls the parameters dictating how oracles and aggregators are added or removed.
 
 ## Oracle
 
-Node between the internet and the solana blockchain responsible for fuliflling data feed updates
+Node between the internet and the solana blockchain responsible for fuliflling data feed updates from external sources.
 
-## Lease Contract
+## Aggregator (Data Feed)
 
-Lease contracts reserve a set amount of compute from the oracle queue and contain the up front capital to reward oracles for processing any updates.
-
-## Crank
-
-The crank is the mechanism which jump starts switchboard and checks for any data feeds ready for an update. Solana has no way to schedule transactions so the crank acts as the ignitor.
-
-## Curator
-
-Curators scour the web and find reliable endpoints to build data feeds from. In return curators receive a percentage of fees generated from a data feed to incentivize diverse data sources.
+Contain the individual job definitions for how data is retrieved from external sources as well as the configuration parameters that dictate when an oracle result is accepted.
 
 ## Publisher
 
-Publishers are usually the on-chain consumer of data feeds and are responsible for building a data feed configuration and funding the lease contract for a specified period of time.
+Usually the on-chain consumer of data feeds and are responsible for building a data feed configuration and funding the lease contract.
 
-## PermissionAccount
+## Lease Contract
 
-Grant a data feed or oracle to join a permissioned queue.
+Escrow contract between an oracle queue and an aggregator. Contains the up-front capital to reward oracles for processing update request.
+
+## Crank
+
+Collection of aggregators that are updated at a periodic interval. Solana has no way to schedule transactions so the crank is periodically turned to check for any available updates and jumpstart the network. Each oracle queue can have at most 1 crank.
+
+## Curator
+
+Responsible for scouring the internet and finding reliable endpoints for publishers to construct data feeds from. Curators receive a percentage of fees generated from a data feed to incentivize diverse data sources.
