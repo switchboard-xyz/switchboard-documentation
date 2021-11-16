@@ -9,8 +9,8 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
-import useThemeContext from "@theme/hooks/useThemeContext";
 import { FeatureItem } from "./HomepageFeatures";
+import useThemeContext from "@theme/hooks/useThemeContext";
 
 export type FeatureCardProps = FeatureItem;
 
@@ -20,6 +20,7 @@ export default function FeatureCard({
   description,
   linkTo,
 }: FeatureCardProps) {
+  const { isDarkTheme } = useThemeContext();
   return (
     <Button
       component={Link}
@@ -33,7 +34,8 @@ export default function FeatureCard({
     >
       <Card
         sx={{
-          backgroundColor: "inherit",
+          backgroundColor: isDarkTheme ? "rgba(238, 238, 238, 0.1)" : "inherit",
+          color: isDarkTheme ? "rgb(225, 229, 235)" : "rgb(23, 23, 23)",
           width: "100%",
           height: "100%",
           maxWidth: {
@@ -81,12 +83,10 @@ export default function FeatureCard({
               />
             </Grid>
             <Grid item xs={8} sm={8}>
-              <Typography color="text.primary" gutterBottom variant="h5">
+              <Typography gutterBottom variant="h5">
                 {title}
               </Typography>
-              <Typography color="text.primary" variant="body2">
-                {description}
-              </Typography>
+              <Typography variant="body2">{description}</Typography>
             </Grid>
           </Grid>
         </CardContent>
