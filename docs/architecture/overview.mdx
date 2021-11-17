@@ -13,7 +13,9 @@ import MarkdownImage from "../../src/components/MarkdownImage";
 
 ### [Oracle Queue](/architecture/oracle-queue)
 
-The orchestrator behind a switchboard network and controls how oracles and aggregators are added or removed from the network. Oracles are arranged in a round-robin fashion, where once requested, the next N oracles in the queue are assigned to an aggregator. Oracle positions are periodically swapped to mitigate oracles being assigned to the same feeds each cycle.
+An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. Oracles are arranged in a round-robin fashion, where once requested, the next N oracles in the queue are assigned to a feed. Oracle positions are periodically swapped to mitigate oracles being assigned to the same feeds each update cycle.
+
+A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial implementation will cap queue sizes at 2048 and increase it as the network grows.
 
 #### Permission Account
 
