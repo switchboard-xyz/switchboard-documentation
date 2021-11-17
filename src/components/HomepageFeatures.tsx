@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import FeatureCard from "./FeatureCard";
 import { FeatureList } from "./FeatureList";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 export type FeatureItem = {
   title: string;
@@ -11,6 +13,10 @@ export type FeatureItem = {
 };
 
 export default function HomepageFeatures(): JSX.Element {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"), {
+    defaultMatches: true,
+  });
   return (
     <Grid
       container
@@ -18,7 +24,7 @@ export default function HomepageFeatures(): JSX.Element {
       xs={11}
       lg={9}
       md={10}
-      spacing={3}
+      spacing={isMobile ? 2 : 6}
       direction="row"
       justifyContent="center"
       alignItems="center"
