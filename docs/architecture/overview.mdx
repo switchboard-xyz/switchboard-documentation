@@ -3,40 +3,38 @@ sidebar_position: 1
 slug: /architecture
 ---
 
-# Architecture
-
-## Components
+# Accounts
 
 import MarkdownImage from "../../src/components/MarkdownImage";
 
 <MarkdownImage img="/img/architecture_overview.png" />
 
-### Oracle Queue
+## Oracle Queue
 
 An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. Oracles are arranged in a round-robin fashion, where once requested, the next N oracles in the queue are assigned to a feed. Oracle positions are periodically swapped to mitigate oracles being assigned to the same feeds each update cycle.
 
 A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial implementation will cap queue sizes at 2048 and increase it as the network grows.
 
-#### Permission Account
+### Permission Account
 
 Program account controlled by the oracle queue and grants an oracle or aggregator permissions to use its resources.
 
-### [Oracle](/oracle)
+## [Oracle](/oracle)
 
 Node between the internet and the solana blockchain responsible for fuliflling data feed updates from external sources. A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial implementation will cap queue sizes at 2048 and increase it as the network grows.
 
-### Crank
+## Crank
 
 Aggregators be configured so they are updated periodically or on-command, depending on the feed’s use case. Each oracle queue can have at most 1 crank. If an oracle queue does not have a crank, each aggregator update will need to be invoked manually every time. Solana has no mechanism to schedule periodic updates so a Crank is used to jump start the system. Any feed approved by the DAO is free to join the oracle queue’s crank. The Crank is a priority queue of data feed public keys ordered by the feeds next available update time. When cranked, Switchboard will look for any data feeds ready for an update and if successful, reward the user who called it. If no data feed is ready to be updated, the crankers transaction will fail and they could potentially lose their transaction fee. The crank is the scheduler behind the oracles and incentivizes users to help keep the system spinning.
 
-### [Aggregator](/architecture/aggregator)
+## [Aggregator](/architecture/aggregator)
 
 An aggregator or data feed is what on-chain developers use when building smart contracts. An aggregator contains a collection of job accounts as well as a configuration dictating how often a feed should be updated and the minimum number of jobs or oracles that must respond before accepting a result. The publisher is ultimately responsible for building a data feed and making the necessary trade-offs as it’s a careful balance between cost and update interval. The publisher is usually the on-chain consumer of the data and will have the most familiarity with how the data may be used to make these considerations.
 
-#### Job Account
+### Job Account
 
 Each of the aggregators assigned job account is associated with an external source and has a number of tasks that get executed in sequential order to produce a detereministic result. Typically the first task in a job will fetch external data with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal. When an oracle is assigned to a data feed update request, the oracle executes the defined jobs and publishes the median result on-chain. The data feed then computes the final value as the median response among the assigned oracles. In summary, the data feed is the blueprint for how data gets fetched from off-chain sources.
 
-#### Lease Contract
+### Lease Contract
 
 Escrow contract between an oracle queue and an aggregator which contains the up-front capital to reward oracles for processing update request. If a lease falls below the minimum balance, the aggregator will be removed from the queue until it has enough funds. Lease contracts are owned by the program and can be funded by anyone using the data feed.
