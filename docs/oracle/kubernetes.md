@@ -8,24 +8,18 @@ Before deploying the application, we must first provision a kubernetes cluster w
 
 ## Setup
 
-The repo below contains configuration files to streamline the kubernetes deployment. Clone the repo below to get started:
+First we will need install kubectl, which is a command line tool that will let us provision a kubernetes cluster. Follow the link below and complete the installation steps for your operating system.
+
+- **[Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)**
+
+The repo below contains the kubernetes manifest to streamline the kubernetes deployment. Clone the repo below to get started:
 
 ```bash
 git clone https://github.com/switchboard-xyz/customer-k8s.git
 cd customer-k8s
 ```
 
-Along with the kubernetes manifest, you will also need the following:
-
-- [kubectl](#kubectl) - to provision our kubernetes cluster
-- [Solana keypair with an active balance](#solana-keypair) - to fund oracle transactions
-- [Oracle Account](#oracle-account) - to be granted access to an oracle queue and get rewarded
-- [Google Auth](#google-auth) - to publish the kubernetes cluster to your Google Cloud Platform account. You should have already installed [gcloud sdk](./cloud-providers.md)
-- [Grafana](#grafana) - metrics dashboard
-- [Pagerduty](#pagerduty) - for monitoring any oracle downtime and help avoid slashing
-- (Optional) Google Secret Manager - to enhance security of your keypairs
-
-In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment.
+Along with the kubernetes manifest, we will also need to capture the required environment variables. In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
 
 ```bash env title=".env"
 # Switchboard/Solana Config
@@ -50,10 +44,6 @@ GOOGLE_PAYER_SECRET_PATH=""
 SERVICE_ACCOUNT_BASE64=""
 ```
 
-### kubectl
-
-**[Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)** - kubectl is a command line tool that will let us provision a kubernetes cluster. Follow the installation steps for your operating system.
-
 ### Solana Keypair
 
 You will need a solana keypair with an active balance. You can create a new keypair using the [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools) and running the following command:
@@ -62,7 +52,7 @@ You will need a solana keypair with an active balance. You can create a new keyp
 solana-keygen new --outfile authority-keypair.json
 ```
 
-For best security practices, avoid storing the keypair in a git repository. The default keypair location is `${HOME}/.config/solana/id.json`. More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
+More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
 
 ### Oracle Account
 

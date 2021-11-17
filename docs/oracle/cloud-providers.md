@@ -14,7 +14,9 @@ You will need a Google Cloud Platform account with the [Cloud SDK installed](htt
 gcloud auth login
 ```
 
-Here's some additional links to get started
+### Additional Resources
 
-- [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
+Here's some extra reading to learn more about kubernetes
+
 - [What is Kubernetes?](https://cloud.google.com/learn/what-is-kubernetes)
+- [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
