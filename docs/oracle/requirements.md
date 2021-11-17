@@ -12,3 +12,5 @@ Running an oracle allows you to contribute to the switchboard network and get co
 - Dedicated RPC endpoint with reliable up-time
 - Cloud hosting provider
 - Staked SOL
+
+![Docusaurus](/img/adding_new_oracles.png)
