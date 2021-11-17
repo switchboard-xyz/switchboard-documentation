@@ -8,10 +8,13 @@ A Switchboard oracle can be run on any cloud provider who offers kubernetes serv
 
 ## Google Cloud
 
-You will need a Google Cloud Platform account with the Cloud SDK installed.
+You will need a Google Cloud Platform account with the [Cloud SDK installed](https://cloud.google.com/sdk/docs/install). Once installed, login to your google cloud account:
 
-### Resources
+```bash
+gcloud auth login
+```
 
-- [Installing Cloud SDK](https://cloud.google.com/sdk/docs/install)
+Here's some additional links to get started
+
 - [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
 - [What is Kubernetes?](https://cloud.google.com/learn/what-is-kubernetes)
