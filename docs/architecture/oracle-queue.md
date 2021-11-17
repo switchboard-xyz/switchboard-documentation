@@ -12,3 +12,5 @@ Oracle positions are periodically swapped to mitigate oracles being assigned to 
 ## Queue Sizes
 
 A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial implementation will cap queue sizes at 2048 and increase it as the network grows.
+
+<!-- TO DO: Add more information on -->
