@@ -84,7 +84,7 @@ const config = {
           // },
           {
             type: "doc",
-            docId: "about/switchboard",
+            docId: "introduction",
             position: "left",
             label: "Docs",
           },

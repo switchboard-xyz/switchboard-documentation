@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-id: switchboard
-slug: /about
+id: introduction
+slug: /introduction
 ---
 
-# Switchboard
+# Introduction
 
 ## About Switchboard
 
@@ -19,3 +19,13 @@ Switchboard gets its name from the early days of phone networks, when operators 
 Smart contracts are the building blocks of web3 and can be thought of as the logic behind programmable money, although their use cases extend well beyond just monetary transactions. A smart contract encapsulates some pre-defined logic allowing anonymous participants to interact without a trusted intermediary. More complex smart contracts might rely on external data from the web but blockchains do not have the capability of directly relaying this information. Enter oracles.
 
 Oracles are the gateway between a blockchain and the real world, providing the mechanisms to arrive at a reliable consensus for a single data point when given multiple sources. Oracles can then determine the most reliable value of the data point after examining the provided answer of each data source. In this way, oracles increase information integrity by removing the risk of a single point of failure or outlier.
+
+## Use Cases
+
+Oracle services have many applicable uses in blockchain based applications today, such as:
+
+- Determining the current price of an asset for collateralized lending
+- Determining the state of a tracking number to auto settle funds on arrival
+- Determining the current standings of the MLB for fantasy sports rankings
+
+Oracles can be used for a variety of data sets as long as there is a reliable way to source the information.

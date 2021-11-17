@@ -4,10 +4,31 @@ slug: /architecture
 title: Overview
 ---
 
+import MarkdownImage from "../../src/components/MarkdownImage";
+
+<MarkdownImage img="/img/architecture_overview.png" />
+
+## Components
+
+- **Oracle Queue**: The orchestrator behind a switchboard network and controls the parameters dictating how oracles and aggregators are added or removed.
+- **Oracle**: Node between the internet and the solana blockchain responsible for fuliflling data feed updates from external sources. The initial implementation will support up to 1024 oracles, although it can support up to 100,000 oracles if rent exemptions were ignored.
+- **Aggregator**: Specify the paramaters that dictate when an oracle result is accepted, such as minimum number of oracle responses, minimum delay between updates, or the variance threshold among oracle responses. Aggregators also contain a collection of job accounts.
+- **Job Account**: Contain a single job definition specifying how data is retrieved and transformed from an external source.
+- **Crank**: Collection of aggregators that will be updated at a periodic interval. Solana has no way to schedule transactions so the crank is periodically turned to check for any available updates and if found, pass the aggregator account to the next N oracles. Each oracle queue can have at most 1 crank. If an oracle queue does not have a crank, each aggregator update will need to be invoked manually every time.
+- **Lease Contract**: Escrow contract between an oracle queue and an aggregator which contains the up-front capital to reward oracles for processing update request. If a lease falls below the minimum balance, the aggregator will be removed from the queue until it has enough funds. Lease contracts are owned by the program and can be funded by anyone using the data feed.
+- **Permission Account**: Program account controlled by the oracle queue and grants an oracle or aggregator permissions to use its resources.
+
+## Actors
+
+- **Publisher**: Usually the on-chain consumer of a data feed and is responsible for building a data feed configuration and funding the lease contract.
+- **Curator**: Responsible for scouring the internet and finding reliable endpoints for publishers to construct data feeds from. Curators receive a percentage of fees generated from a data feed to incentivize diverse data sources.
+- **Crank Turner**: Anyone can compete to turn the crank but only the first user is rewarded for jump starting the network.
+- **DAO**: Responsible for voting on whether to add new oracles or aggregators to the network.
+
+## Demonstration
+
 The following diagram depicts how a data feed update is routed through Switchboard. When the system is cranked, the on-chain contract looks for any data feed updates and passes the public key to the next N oracles in the queue. If a data feed update is found, the user who cranked the system is rewarded.
 
 Once an oracle has been assigned a data feed, it processes the jobs and submits their result on-chain. When enough oracles respond, the data feed calculates the median response and rewards the oracles who were close to the median and slashes oracles who were potentially acting dishonestly.
-
-import MarkdownImage from "../../src/components/MarkdownImage";
 
 <MarkdownImage img="/img/data_feed_creation.png" lightBg="#232f3e" />

@@ -9,7 +9,7 @@ import {
   Grid,
   CardContent,
 } from "@mui/material";
-import { FeatureItem } from "./HomepageFeatures";
+import { FeatureItem } from "./FeatureList";
 import useThemeContext from "@theme/hooks/useThemeContext";
 
 const XS_ICON = 75;
