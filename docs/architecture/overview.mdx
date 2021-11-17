@@ -7,7 +7,7 @@ slug: /architecture
 
 import MarkdownImage from "../../src/components/MarkdownImage";
 
-<MarkdownImage img="/img/account_decomposition.png" />
+<MarkdownImage img="/img/account_decomposition.png" unstyled />
 
 ## Oracle Queue
 
@@ -27,7 +27,7 @@ Node between the internet and the solana blockchain responsible for fuliflling d
 
 Solana has no mechanism to schedule transactions so a Crank is used to jump start the system. Any feed approved by the DAO is free to join an oracle queue’s crank. The Crank is a priority queue of data feed public keys ordered by the feeds next available update time. When cranked, Switchboard will look for any data feeds ready for an update and if successful, reward the user who called it. If no data feed is ready to be updated, the crankers transaction will fail and they could potentially lose their transaction fee. The crank is the scheduler behind the oracles and incentivizes users to help keep the system spinning.
 
-An oracle queue without a crank will need to manually update each aggregator on-command. An oracle queue can have multiple cranks but an aggregator can only be assigned to a single crank. 
+An oracle queue without a crank will need to manually update each aggregator on-command. An oracle queue can have multiple cranks but an aggregator can only be assigned to a single crank.
 
 ## Aggregator
 
@@ -35,7 +35,7 @@ An aggregator or data feed is used by on-chain developers to build smart contrac
 
 ### Job Account
 
-The job account is the blueprint for how data gets fetched from off-chain sources and contains a collection of tasks that get executed in sequential order to produce a detereministic result. Typically the first task in a job will fetch external data, with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal. 
+The job account is the blueprint for how data gets fetched from off-chain sources and contains a collection of tasks that get executed in sequential order to produce a detereministic result. Typically the first task in a job will fetch external data, with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal.
 
 ### Lease Contract
 
