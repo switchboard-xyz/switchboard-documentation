@@ -22,9 +22,10 @@ You should see two files in the certs directory:
 
 ## Hostname
 
-Optionally, you can configure your grafana hostname to point to the `$LOADBALANCER_IP` that we configured.
+To simplify the deployment, set the `$GRAFANA_HOSTNAME` to `$LOADBALANCER_IP`.
+
+Optionally, you can configure your own domain to point to the `$LOADBALANCER_IP` that we configured.
 
 - Go to your domain management solution
 - Create a DNS A record with `$LOADBALANCER_IP`
-
-Otherwise, set the `$GRAFANA_HOSTNAME` to `$LOADBALANCER_IP`
+- Set `$LOADBALANCER_IP` to your domain name

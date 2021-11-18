@@ -14,7 +14,7 @@ gcloud auth login
 
 ## Project
 
-Create a new project in GCP, give it a name
+Create a new project
 
 ```bash
 gcloud projects create switchboard-oracle-cluster --name="Switchboard Oracle"
@@ -28,7 +28,7 @@ gcloud config set project switchboard-oracle-cluster
 
 ## Billing
 
-Make sure you have billing enabled for your project
+You will need to enable billing for the project before enabling any services:
 
 https://console.cloud.google.com/billing/enable?project=switchboard-oracle-cluster
 
@@ -44,11 +44,11 @@ gcloud services enable secretmanager.googleapis.com
 
 ## Authentication
 
-We will need to provision the credentials to make changes to your google account.
+You will need to create the credentials to make changes to your google account.
 
-First we will need to [enable OAuth consent](https://console.cloud.google.com/apis/credentials/consent) for our application.
+First we will need to [enable OAuth consent](https://console.cloud.google.com/apis/credentials/consent) for our application. [(...more information)](https://support.google.com/cloud/answer/6158849?authuser=3#userconsent&zippy=%2Cuser-consent)
 
-Next we need to create the credentials by navigating to [APIs & Services > Credentials](https://console.cloud.google.com/apis/credentials) and select **+ Create Credentials**
+Next we need to create the credentials by navigating to [APIs & Services > Credentials](https://console.cloud.google.com/apis/credentials), click **+ Create Credentials**, then select **OAuth Client Id** from the drop down
 
 > ![GCP Credentials Dashboard](/img/gcp/Credentials_Dashboard.png)
 
@@ -56,18 +56,19 @@ Set the Application type to `Web application` and give it a name, then select **
 
 > ![GCP Credentials Create OAuth](/img/gcp/Create_OAuth.png)
 
-Note your client ID and secret for the ENV file and download the JSON for safekeeping.
+Note your client ID and secret for the ENV file and download the JSON for safekeeping. This will be your `$GOOGLE_AUTH_CLIENT_ID` and `$GOOGLE_AUTH_CLIENT_SECRET`
 
-This will be your `$GOOGLE_AUTH_CLIENT_ID` and `$GOOGLE_AUTH_CLIENT_SECRET`
+> ![GCP Credentials Create OAuth](/img/gcp/OAuth_Client_Credentials.png)
 
 ## Static IP
 
-We will need to reserve a static IP address for our grafana instance
+You will need to reserve a static IP address for your grafana instance
 
 ```bash
-gcloud services enable compute.googleapis.com
 gcloud compute addresses create load-balancer --project=switchboard-oracle-cluster
 gcloud compute addresses list
+# NAME           ADDRESS/RANGE
+# load-balancer  123.123.123.123
 ```
 
 This will be your `$LOADBALANCER_IP`
@@ -76,10 +77,17 @@ This will be your `$LOADBALANCER_IP`
 
 ## Service Account
 
-We will need to create a service account to access our resources
+You will need to create a service account to access our resources.
 
 ```bash
-gcloud iam service-accounts keys create ./svc-account.json  --iam-account=${GOOGLE_AUTH_CLIENT_ID}
+gcloud iam service-accounts create svc-account --display-name="Oracle Service Account"
+gcloud iam service-accounts list
+```
+
+Now save it to our filesystem
+
+```bash
+gcloud iam service-accounts keys create ./svc-account.json  --iam-account=svc-account@switchboard-oracle-cluster.iam.gserviceaccount.com
 ```
 
 Now convert the json file to a base64 string to store in `$SERVICE_ACCOUNT_BASE64`
@@ -92,10 +100,33 @@ base64 svc-account.json
 
 ## Google Secret Manager
 
-We will need to store our solana keypair in Google Secret Manager for enhanced security. If you are using another keypair replace --data-file with your relevant path.
+You will need to store your solana keypair in Google Secret Manager for enhanced security. If you are using another keypair replace `--data-file` with your relevant path.
 
 ```bash
 gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --data-file=authority-keypair.json
 ```
 
+:::note
+
+You can always update your secret by running the command:
+
+```bash
+gcloud secrets versions add oracle-payer-secret --data-file=authority-keypair.json
+```
+
+:::
 [Google - Creating a secret](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets)
+
+## Create Kubernetes Cluster
+
+Finally you will need to create a new kubernetes cluster
+
+```bash
+gcloud container clusters create switchboard-cluster
+```
+
+then connect to it
+
+```bash
+gcloud container clusters get-credentials switchboard-cluster --project switchboard-oracle-cluster
+```

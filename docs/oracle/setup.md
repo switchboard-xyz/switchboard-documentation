@@ -2,9 +2,11 @@
 sidebar_position: 25
 ---
 
-# Kubernetes
+# Setup
 
 Before deploying the application, we must first provision a kubernetes cluster with the relevant credentials. There are no exotic requirements for this cluster and to date, it has be able to run on an auto pilot GKE cluster without issue.
+
+![Kubernetes Setup Flow](/img/gcp/K8s_Setup_Flow.png)
 
 ## Dependencies
 
@@ -62,7 +64,8 @@ GRAFANA_TLS_KEY=""
 PAGERDUTY_KEY=""
 ```
 
-<!-- TO DO: Should the table also include instructions on where to source the variables? -->
+### Definitions
+
  <table>
   <tr>
     <th>Variable Name</th>
@@ -74,50 +77,66 @@ PAGERDUTY_KEY=""
   </tr>
   <tr>
     <td>ORACLE_KEY</td>
-    <td>Public key of the oracle account that has been granted permissions to use an oracle queue</td>
+    <td>Public key of the oracle account that has been granted permissions to use an oracle queue <br />
+    <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
+    </td>
   </tr>
   <tr>
     <td>GOOGLE_AUTH_CLIENT_ID</td>
-    <td></td>
+    <td>
+      <a href="./google#authentication">Google Cloud Platform #Authentication</a>
+      </td>
   </tr>
   <tr>
     <td>GOOGLE_AUTH_CLIENT_SECRET</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GRAFANA_HOSTNAME</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GRAFANA_OAUTH_ALLOWED_DOMAIN</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GRAFANA_ADMIN_PASSWORD</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GRAFANA_TLS_CRT</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GRAFANA_TLS_KEY</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>PAGERDUTY_EVENT_KEY</td>
-    <td>Token provided by pagerduty for sending pages</td>
+    <td>
+      <a href="./google#authentication">Google Cloud Platform #Authentication</a>
+    </td>
   </tr>
   <tr>
     <td>LOADBALANCER_IP</td>
-    <td></td>
+    <td>
+      <a href="./google#static-ip">Google Cloud Platform #Static Ip</a>
+    </td>
   </tr>
   <tr>
     <td>GOOGLE_PAYER_SECRET_PATH</td>
-    <td></td>
+    <td>
+       <a href="./google#google-secret-manager">Google Cloud Platform #Google Secret Manager</a>
+    </td>
   </tr>
   <tr>
     <td>SERVICE_ACCOUNT_BASE64</td>
-    <td></td>
+    <td>
+      <a href="./google#service-account">Google Cloud Platform #Service Account</a>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_HOSTNAME</td>
+    <td>
+      <a href="./grafana#hostname">Grafana #Hostname</a>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_ADMIN_PASSWORD</td>
+    <td>
+      Password used to authenticate. You can set this yourself
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_TLS_CRT</td>
+    <td>
+      <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_TLS_KEY</td>
+    <td>
+      <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
+    </td>
+  </tr>
+  <tr>
+    <td>PAGERDUTY_EVENT_KEY</td>
+    <td>Token provided by pagerduty for sending pages. If not in use, set to a dummy string "XXX"</td>
   </tr>
 </table>
