@@ -1,5 +1,5 @@
 ---
-sidebar_position: 30
+sidebar_position: 25
 ---
 
 # Kubernetes
@@ -31,14 +31,14 @@ You will need a solana keypair with an active balance. You can create a new keyp
 solana-keygen new --outfile authority-keypair.json
 ```
 
-More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
+This will output a keypair file to the directory where you ran the command. Make note of the filesystem path for future cli commands. More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
 
 ## Environment
 
 Along with the kubernetes manifest, we will also need to capture the required environment variables. In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
 
 ```bash env title=".env"
-# Switchboard/Solana Config
+# Solana Config
 RPC_URL=""
 ORACLE_KEY=""
 # Google Cloud Platform
@@ -58,56 +58,56 @@ GRAFANA_TLS_KEY=""
 PAGERDUTY_KEY=""
 ```
 
-### RPC_URL
+### Solana Config
+
+#### RPC_URL
 
 You should have a highly available RPC server to process any transactions.
 
-RPC_URL="ht<span>tps://</span>your-rpc-url.com"
+<!-- RPC_URL="ht<span>tps://</span>your-rpc-url.com" -->
 
-### Oracle Account
+#### ORACLE_KEY
 
-TO DO: Instructions on creating an oracle account and possibly creating a new Solana keypair
+TO DO
 
 ### Google Cloud Platform
 
-TO DO: How to source google auth config variables
+#### GOOGLE_AUTH_CLIENT_ID
+
+#### GOOGLE_AUTH_CLIENT_SECRET
+
+#### LOADBALANCER_IP
+
+### Google Secret Manager
+
+#### GOOGLE_PAYER_SECRET_PATH
+
+#### SERVICE_ACCOUNT_BASE64
 
 ### Grafana
 
-You will need to setup an account on [Grafana](https://grafana.com/) to monitor your kubernetes cluster.
+#### GRAFANA_HOSTNAME
 
-### Pagerduty
+Use `$LOADBALANCER_IP`. Optionally, you can setup a domain with a DNS A record as the loadbalancer IP and set this here.
 
-TO DO: Setup pagerduty config variables
+#### GRAFANA_ADMIN_PASSWORD
 
-### Google Secret Manager Config
+Set this to whatever you want your password to be
 
-TO DO: (OPTIONAL) Setup Google Secret Manager for enhanced security
+#### GRAFANA_TLS
 
-## Deployment
-
-After completing the steps above, you should have an env file with each of the variables defined. We are now ready to provision our kubernetes cluster.
-
-The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="devnet" label="Devnet" default>
+We will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
 
 ```bash
-kubectl apply -k ./overlays/devnet/kustomization.yaml
+openssl req  -nodes -new -x509 -keyout ./certs/keystore.key -out \
+    ./certs/keystore.pem -subj '/CN=mydomain.net' -days 3650
 ```
 
-</TabItem>
-<TabItem value="mainnet" label="Main-net">
+You should see two files in the certs directory:
 
-```bash
-kubectl apply -k ./overlays/mainnet/kustomization.yaml
-```
+- `$GRAFANA_TLS_KEY` will be set to the text in between the headers in certs/keystore.key
+- `$GRAFANA_TLS_CRT` will be set to the text in between the headers in certs/keystore.pem
 
-</TabItem>
-</Tabs>
+### Alerts
 
-**Note:** If this is your first time deploying to a given cluster then when you run kubectl apply, the custom resources won't be applied yet so you will get a few errors that say `no matches for kind` for those custom resources. Simply rerunning the deploy command will apply the manifest again and everything should complete with no errors.
+#### PAGERDUTY_KEY

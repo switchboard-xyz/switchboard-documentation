@@ -1,0 +1,37 @@
+---
+sidebar_position: 80
+---
+
+# Deploy
+
+After completing the steps in the previous pages, you should have an env file with each of the variables defined. We will need to set all of the environment variables then inject them into the manifest files
+
+```bash
+set -o allexport; source .env; set +o allexport
+```
+
+We are now ready to provision our kubernetes cluster.
+
+The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="devnet" label="Devnet" default>
+
+```bash
+kubectl apply -k ./overlays/devnet/kustomization.yaml
+```
+
+</TabItem>
+<TabItem value="mainnet" label="Main-net">
+
+```bash
+kubectl apply -k ./overlays/mainnet/kustomization.yaml
+```
+
+</TabItem>
+</Tabs>
+
+**Note:** If this is your first time deploying to a given cluster then when you run kubectl apply, the custom resources won't be applied yet so you will get a few errors that say `no matches for kind` for those custom resources. Simply rerunning the deploy command will apply the manifest again and everything should complete with no errors.
