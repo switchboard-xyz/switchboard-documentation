@@ -2,6 +2,8 @@
 sidebar_position: 40
 ---
 
+import MarkdownImage from "../../src/components/MarkdownImage";
+
 # Google Cloud Platform
 
 You will need a Google Cloud Platform account with the [Cloud SDK installed](https://cloud.google.com/sdk/docs/install). Once installed, login to your google cloud account:
@@ -48,11 +50,11 @@ First we will need to [enable OAuth consent](https://console.cloud.google.com/ap
 
 Next we need to create the credentials by navigating to [APIs & Services > Credentials](https://console.cloud.google.com/apis/credentials) and select **+ Create Credentials**
 
-![GCP Credentials Dashboard](/img/gcp/Credentials_Dashboard.png)
+> ![GCP Credentials Dashboard](/img/gcp/Credentials_Dashboard.png)
 
 Set the Application type to `Web application` and give it a name, then select **Create**
 
-![GCP Credentials Create OAuth](/img/gcp/Create_OAuth.png)
+> ![GCP Credentials Create OAuth](/img/gcp/Create_OAuth.png)
 
 Note your client ID and secret for the ENV file and download the JSON for safekeeping.
 
@@ -97,17 +99,3 @@ gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --da
 ```
 
 [Google - Creating a secret](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets)
-
-## Generate TLS Certificate
-
-We will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
-
-```bash
-openssl req  -nodes -new -x509 -keyout ./certs/keystore.key -out \
-    ./certs/keystore.pem -subj '/CN=mydomain.net' -days 3650
-```
-
-You should see two files in the certs directory:
-
-- `$GRAFANA_TLS_KEY` will be set to the text in between the headers in certs/keystore.key
-- `$GRAFANA_TLS_CRT` will be set to the text in between the headers in certs/keystore.pem

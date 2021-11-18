@@ -4,7 +4,7 @@ sidebar_position: 25
 
 # Kubernetes
 
-Before deploying the application, we must first provision a kubernetes cluster with the relevant credentials. There are no exotic requirements for this cluster and to date, it has be able to run on an auto pilot GKE cluster without issue. A full description of each environment variable is also captured in the [Environment Variables Table](./env.md).
+Before deploying the application, we must first provision a kubernetes cluster with the relevant credentials. There are no exotic requirements for this cluster and to date, it has be able to run on an auto pilot GKE cluster without issue.
 
 ## Dependencies
 
@@ -22,6 +22,10 @@ The repo below contains the kubernetes manifest to streamline the deployment. Cl
 git clone https://github.com/switchboard-xyz/customer-k8s.git
 cd customer-k8s
 ```
+
+### Solana RPC Server
+
+You should have a highly available RPC server to process any transactions.
 
 ### Solana Keypair
 
@@ -58,56 +62,62 @@ GRAFANA_TLS_KEY=""
 PAGERDUTY_KEY=""
 ```
 
-### Solana Config
-
-#### RPC_URL
-
-You should have a highly available RPC server to process any transactions.
-
-<!-- RPC_URL="ht<span>tps://</span>your-rpc-url.com" -->
-
-#### ORACLE_KEY
-
-TO DO
-
-### Google Cloud Platform
-
-#### GOOGLE_AUTH_CLIENT_ID
-
-#### GOOGLE_AUTH_CLIENT_SECRET
-
-#### LOADBALANCER_IP
-
-### Google Secret Manager
-
-#### GOOGLE_PAYER_SECRET_PATH
-
-#### SERVICE_ACCOUNT_BASE64
-
-### Grafana
-
-#### GRAFANA_HOSTNAME
-
-Use `$LOADBALANCER_IP`. Optionally, you can setup a domain with a DNS A record as the loadbalancer IP and set this here.
-
-#### GRAFANA_ADMIN_PASSWORD
-
-Set this to whatever you want your password to be
-
-#### GRAFANA_TLS
-
-We will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
-
-```bash
-openssl req  -nodes -new -x509 -keyout ./certs/keystore.key -out \
-    ./certs/keystore.pem -subj '/CN=mydomain.net' -days 3650
-```
-
-You should see two files in the certs directory:
-
-- `$GRAFANA_TLS_KEY` will be set to the text in between the headers in certs/keystore.key
-- `$GRAFANA_TLS_CRT` will be set to the text in between the headers in certs/keystore.pem
-
-### Alerts
-
-#### PAGERDUTY_KEY
+<!-- TO DO: Should the table also include instructions on where to source the variables? -->
+ <table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>RPC_URL</td>
+    <td>Solana RPC URL that dictates which cluster is used. The default RPC pools should be avoided at all cost as you will quickly hit the rate limits and risk being slashed</td>
+  </tr>
+  <tr>
+    <td>ORACLE_KEY</td>
+    <td>Public key of the oracle account that has been granted permissions to use an oracle queue</td>
+  </tr>
+  <tr>
+    <td>GOOGLE_AUTH_CLIENT_ID</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GOOGLE_AUTH_CLIENT_SECRET</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GRAFANA_HOSTNAME</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GRAFANA_OAUTH_ALLOWED_DOMAIN</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GRAFANA_ADMIN_PASSWORD</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GRAFANA_TLS_CRT</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GRAFANA_TLS_KEY</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>PAGERDUTY_EVENT_KEY</td>
+    <td>Token provided by pagerduty for sending pages</td>
+  </tr>
+  <tr>
+    <td>LOADBALANCER_IP</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>GOOGLE_PAYER_SECRET_PATH</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>SERVICE_ACCOUNT_BASE64</td>
+    <td></td>
+  </tr>
+</table>

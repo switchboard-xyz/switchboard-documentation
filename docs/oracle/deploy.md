@@ -8,27 +8,20 @@ After completing the steps in the previous pages, you should have an env file wi
 
 ```bash
 set -o allexport; source .env; set +o allexport
+chmod +x ./env-set.sh
+./env-set.sh
 ```
 
-We are now ready to provision our kubernetes cluster.
-
-The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
+We are now ready to provision our kubernetes cluster. The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-<TabItem value="devnet" label="Devnet" default>
+<TabItem value="mainnet" label="Main-net" default>
 
 ```bash
-kubectl apply -k ./overlays/devnet/kustomization.yaml
-```
-
-</TabItem>
-<TabItem value="mainnet" label="Main-net">
-
-```bash
-kubectl apply -k ./overlays/mainnet/kustomization.yaml
+kubectl apply -k ./overlays/mainnet/
 ```
 
 </TabItem>
