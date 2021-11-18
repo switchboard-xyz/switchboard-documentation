@@ -11,16 +11,12 @@ sidebar_position: 35
     <th>Definition</th>
   </tr>
   <tr>
-    <td>ORACLE_KEY</td>
-    <td>Public key of the oracle account that has been granted permissions to use an oracle queue</td>
-  </tr>
-  <tr>
-    <td>PAYER_SECRET</td>
-    <td>Filesystem path to a json keypair file containing the secret key to pay for any oracle transactions</td>
-  </tr>
-  <tr>
     <td>RPC_URL</td>
     <td>Solana RPC URL that dictates which cluster is used. The default RPC pools should be avoided at all cost as you will quickly hit the rate limits and risk being slashed</td>
+  </tr>
+  <tr>
+    <td>ORACLE_KEY</td>
+    <td>Public key of the oracle account that has been granted permissions to use an oracle queue</td>
   </tr>
   <tr>
     <td>GOOGLE_AUTH_CLIENT_ID</td>
@@ -56,10 +52,6 @@ sidebar_position: 35
   </tr>
   <tr>
     <td>LOADBALANCER_IP</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>GOOGLE_ORACLE_SECRET_PATH</td>
     <td></td>
   </tr>
   <tr>
