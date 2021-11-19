@@ -13,6 +13,8 @@ A single Oracle queue was architected to support over 100,000 oracles, but given
 
 An oracle queue manages how its resources get allocated by using permission accounts. Any oracle or aggregator that wants to use a feed must be approved by the queue's authority. The Switchboard DAO oracle queue's will use on-chain voting to control how permission accounts are created and revoked.
 
+## OracleQueueAccount Struct
+
 <table>
   <tr>
     <th>Variable Name</th>
@@ -29,9 +31,7 @@ An oracle queue manages how its resources get allocated by using permission acco
   <tr>
     <td>Authority</td>
     <td>
-      Queue operator who approves permission accounts.
-      <br />
-      The <strong>Switchboard DAO</strong> will operate oracle queue's with a
+      Queue operator who approves permission accounts. The <i>Switchboard DAO</i> will operate oracle queue's with a
       multi-signature setup controlled by on-chain voting
     </td>
   </tr>
@@ -56,7 +56,7 @@ An oracle queue manages how its resources get allocated by using permission acco
   </tr>
   <tr>
     <td>Variance Tolerance Multiplier</td>
-    <td>Number of standard deviations before an oracle results is considered invalid</td>
+    <td>Number of deviations before an oracle results is considered invalid. Deviation value is set per aggregator</td>
   </tr>
   <tr>
     <td>Feed Probation Period</td>

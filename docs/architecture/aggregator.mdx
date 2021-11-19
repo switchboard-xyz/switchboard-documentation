@@ -1,0 +1,219 @@
+---
+sidebar_position: 6
+slug: /architecture/aggregator
+---
+
+# Aggregator
+
+## What is a Data Feed?
+
+An aggregator or data feed is what on-chain developers use when building smart contracts. A data feed is a collection of jobs that get aggregated to produce some deterministic result. Each job is associated with an endpoint and has a number of tasks that get executed in sequential order in order to produce a single value. Typically the first task in a job will fetch external data with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal. When an oracle is assigned to process a data feed update, the oracle executes the defined jobs and publishes the median result on-chain. The data feed then computes the final value as the median response among the assigned oracles. In summary, the data feed is the blueprint for how data gets fetched from off-chain sources.
+
+Along with the jobs, a data feed also includes a configuration dictating how often a feed should be updated and the minimum number of jobs or oracles that must respond before accepting a result. The publisher is ultimately responsible for building a data feed and making the necessary trade-offs as it’s a careful balance between cost and update interval. The publisher is usually the on-chain consumer of the data and will have the most familiarity with how the data may be used to make these considerations.
+
+## Types of Data Feeds
+
+Once a data feed has been configured, it needs to be assigned an oracle queue to process updates. Data feeds can be public, where they are approved by the DAO and have access to its oracle queue, or private, where the publisher has their own oracle infrastructure or agreements with oracle operators to process their updates. A private feed has the added benefit of embedding API keys within a job for any endpoints that require authentication, meaning a greater level of trust is needed between publishers and oracles. These keys will need to be created by individual oracle operators or provided by the private feed creator.
+
+## Lease Contract
+
+Oracle queues have a finite amount of resources proportional to its number of oracles so the DAO may reject new feeds that could cause delays on existing feeds. The publisher is responsible for creating a lease contract to reserve a set amount of computer power from the oracle queue. Once a publisher’s feed is accepted by the DAO, the feed is added to the network and granted permissions to use the oracle queue resources.
+
+When creating a lease contract, the publisher specifies a withdrawal authority then funds the lease contract to reward oracle operators for processing any future updates. The withdrawal authority allows a publisher to cancel and refund their lease contract at any point in time and specifies where any remaining lease balance is sent. The lease fee is derived from the oracle rewards dictated by each oracle queue. If a data feed’s lease is low on funds, any update requests will fail and the feed will be removed from any scheduled updates. As a feed gains popularity, other dApp developers will be incentivized to extend the lease and keep it active. This creates a natural decay where unused feeds go unfunded to make room for new use cases.
+
+<!-- TO DO: Aggregator configuration parameters like min number of oracle responses -->
+
+<!-- TO DO: Add links to other resources like reading a data feed, manually requesting a data feed update, using the front end website -->
+
+## AggregatorAccount Struct
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Name of the aggregator for easier identification</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Reserved for metadata</td>
+  </tr>
+  <tr>
+    <td>Authority</td>
+    <td>Public key of the authority who can make changes to the account</td>
+  </tr>
+  <tr>
+    <td>Author Wallet</td>
+    <td>
+      Pubkey of the publisher who created and initially funded the aggregator
+    </td>
+  </tr>
+  <tr>
+    <td>Queue Pubkey</td>
+    <td>Pubkey of the queue the aggregator belongs to</td>
+  </tr>
+  <tr>
+    <td>Oracle Request Batch Size</td>
+    <td>Number of oracles assigned to an update request</td>
+  </tr>
+  <tr>
+    <td>Minimum Oracle Results</td>
+    <td>
+      Minimum number of oracle responses before an aggregator accepts a value
+    </td>
+  </tr>
+  <tr>
+    <td>Minimum Job Results</td>
+    <td>Minimum number of job results before an oracle accepts a result</td>
+  </tr>
+  <tr>
+    <td>Minimum Update Delay</td>
+    <td>Minimum time (seconds) before requesting another update request</td>
+  </tr>
+  <tr>
+    <td>Start After</td>
+    <td>
+      Timestampt to start feed updates at. Useful if you are resolving a sport
+      event that ends around a certain time
+    </td>
+  </tr>
+  <tr>
+    <td>Variance Threshold</td>
+    <td>Deviation threshold for oracle results to be considered valie</td>
+  </tr>
+  <tr>
+    <td>Force Report Period</td>
+    <td>
+      Force oracles to report a value if no results have been accepted by a
+      certain timestamp
+    </td>
+  </tr>
+  <tr>
+    <td>Expiration</td>
+    <td>Timestamp when the feed is no longer needed</td>
+  </tr>
+  <tr>
+    <td>Consecutive Failure Count</td>
+    <td>
+      Counter for the number of consecutive failures before a feed is removed
+      from a queue
+    </td>
+  </tr>
+  <tr>
+    <td>Next Allowed Update Time</td>
+    <td>Timestamp when the next update request will be available</td>
+  </tr>
+  <tr>
+    <td>Is Locked</td>
+    <td>Flag for whether an aggregators configuration is locked for editing</td>
+  </tr>
+  <tr>
+    <td>Latest Confirmed Round</td>
+    <td>
+      Latest confirmed update request result that has been accepted as valid
+      <br />
+      <strong>AggregatorRound</strong> See table below
+    </td>
+  </tr>
+  <tr>
+    <td>Current Round</td>
+    <td>
+      Oracle results from the current round of update request that has not been
+      accepted as valid yet
+      <br />
+      <strong>AggregatorRound</strong> See table below
+    </td>
+  </tr>
+  <tr>
+    <td>Job Public Keys</td>
+    <td>
+      List of public keys containing the job definitions for how data is sourced
+      off-chain by oracles
+    </td>
+  </tr>
+  <tr>
+    <td>Job Hashes</td>
+    <td>
+      Hashes of the job account serialized data to prevent jobs being modified
+      after publishing
+    </td>
+  </tr>
+  <tr>
+    <td>Job Public Keys Size</td>
+    <td>Number of jobs assigned to an oracle</td>
+  </tr>
+  <tr>
+    <td>Jobs Checksum</td>
+    <td>
+      Used to confirm oracles are responding to the update request they intended
+      to respond to
+    </td>
+  </tr>
+</table>
+
+## AggregatorRound Struct
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Success Number</td>
+    <td>Number of successful responses</td>
+  </tr>
+  <tr>
+    <td>Error Number</td>
+    <td>Number of error responses</td>
+  </tr>
+  <tr>
+    <td>Is Closed</td>
+    <td>Whether an update request round has ended</td>
+  </tr>
+  <tr>
+    <td>Round Open Slot</td>
+    <td>Solana slot when the update request round was open</td>
+  </tr>
+  <tr>
+    <td>Round Open Timestamp</td>
+    <td>Timestamp when the update request round was open</td>
+  </tr>
+  <tr>
+    <td>Result</td>
+    <td>Maintains the current median of all successful round responses</td>
+  </tr>
+  <tr>
+    <td>Standard Deviation</td>
+    <td>Standard deviation of the accepted results in the round</td>
+  </tr>
+  <tr>
+    <td>Minimum Response</td>
+    <td>Maintains the minimum oracle response this round</td>
+  </tr>
+  <tr>
+    <td>Maximum Response</td>
+    <td>Maintains the maximum oracle response this round</td>
+  </tr>
+  <tr>
+    <td>Oracle Public Keys</td>
+    <td>Public keys of the oracles fulfilling this round</td>
+  </tr>
+  <tr>
+    <td>Medians Data</td>
+    <td>Represents all successful node responses this round. `NaN` if empty</td>
+  </tr>
+  <tr>
+    <td>Current Payout</td>
+    <td>Current rewards/slashes oracles have received this round</td>
+  </tr>
+  <tr>
+    <td>Medians Fulfilled</td>
+    <td>Keeps track of which responses are fulfilled here</td>
+  </tr>
+  <tr>
+    <td>Errors Fulfilled</td>
+    <td>Keeps track of which errors are fulfilled here</td>
+  </tr>
+</table>

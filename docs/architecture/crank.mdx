@@ -1,0 +1,49 @@
+---
+sidebar_position: 8
+slug: /architecture/crank
+---
+
+# Crank
+
+Solana has no mechanism to schedule transactions so a Crank is used to jump start the system. Any feed approved by the DAO is free to join an oracle queue’s crank. The Crank is a priority queue of data feed public keys ordered by the feeds next available update time. When cranked, Switchboard will look for any data feeds ready for an update and if successful, reward the user who called it. If no data feed is ready to be updated, the crankers transaction will fail and they could potentially lose their transaction fee. The crank is the scheduler behind the oracles and incentivizes users to help keep the system spinning.
+
+An oracle queue without a crank will need to manually update each aggregator on-command. An oracle queue can have multiple cranks but an aggregator can only be assigned to a single crank.
+
+See [Update Request Flow](./update-request) for how a crank initiates an update request.
+
+## CrankAccount Struct
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Name of the queue for easier identification</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Reserved for metadata</td>
+  </tr>
+  <tr>
+    <td>Queue Public Key</td>
+    <td>Public key of the oracle queue who owns the crank</td>
+  </tr>
+  <tr>
+    <td>Max Size</td>
+    <td>Maximum number of aggregators allowed to be added to a crank</td>
+  </tr>
+  <tr>
+    <td>Size</td>
+    <td>Number of aggregators added to the crank</td>
+  </tr>
+  <tr>
+    <td>Jitter Modifier</td>
+    <td>Pseudorandom value added to next aggregator update time</td>
+  </tr>
+  <tr>
+    <td>Data Buffer</td>
+    <td>Public key of the buffer account holding the list of aggregators</td>
+  </tr>
+</table>
