@@ -1,0 +1,86 @@
+---
+sidebar_position: 4
+slug: /architecture/queue
+---
+
+# Queue
+
+An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. Oracles are arranged in a round-robin fashion, where once requested, the next N oracles in the queue are assigned to a feed. Oracle positions are periodically swapped to mitigate oracles being assigned to the same feeds each update cycle.
+
+A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial Switchboard DAO will cap queue sizes at 2048 and increase it as the network grows.
+
+## Permission Account
+
+An oracle queue manages how its resources get allocated by using permission accounts. Any oracle or aggregator that wants to use a feed must be approved by the queue's authority. The Switchboard DAO oracle queue's will use on-chain voting to control how permission accounts are created and revoked.
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Name of the queue for easier identification</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Reserved for metadata</td>
+  </tr>
+  <tr>
+    <td>Authority</td>
+    <td>
+      Queue operator who approves permission accounts.
+      <br />
+      The <strong>Switchboard DAO</strong> will operate oracle queue's with a
+      multi-signature setup controlled by on-chain voting
+    </td>
+  </tr>
+  <tr>
+    <td>Oracle Timeout</td>
+    <td>Maximum allowable time between oracle heartbeats before they are removed from a queue</td>
+  </tr>
+  <tr>
+    <td>Reward</td>
+    <td>Rewards paid out to an oracle for fulfilling update request</td>
+  </tr>
+  <tr>
+    <td>Minimum Stake</td>
+    <td>Minimum stake required by an oracle to join a queue</td>
+  </tr>
+  <tr>
+    <td>Slashing Enabled</td>
+    <td>
+      Whether oracles are slashed for reporting a result outside the variance
+      threshold
+    </td>
+  </tr>
+  <tr>
+    <td>Variance Tolerance Multiplier</td>
+    <td>Number of standard deviations before an oracle results is considered invalid</td>
+  </tr>
+  <tr>
+    <td>Feed Probation Period</td>
+    <td>Amount of time an aggregator with an insufficient lease contract balance is on probation before being removed from a queue</td>
+  </tr>
+
+  <tr>
+    <td>Consecutive Feed Failure Limit</td>
+    <td>Number of consecutive aggregator update failures before its permissions are revoked</td>
+  </tr>
+  <tr>
+    <td>Consecutive Oracle Failure Limit</td>
+    <td>Number of consecutive oracle failures before its permissions are revoked</td>
+  </tr>
+  <tr>
+    <td>Max Size</td>
+    <td>Maximum number of oracles a queue can support</td>
+  </tr>
+  <tr>
+    <td>Size</td>
+    <td>Current number of oracles on a queue</td>
+  </tr>
+  <tr>
+    <td>Data Buffer</td>
+    <td>Pubkey of the on-chain account holding the queue data</td>
+  </tr>
+</table>
