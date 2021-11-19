@@ -9,7 +9,19 @@ sidebar_position: 80
 After completing the steps in the previous pages, you should have an env file with each of the variables defined. We will need to set all of the environment variables then inject them into the manifest files
 
 ```bash
-source .env; bash env-set.sh; rm kubernetes/tmp.txt
+source .env
+```
+
+If bash is your default shell
+
+```bash
+./env-set.sh
+```
+
+If Zsh is your default shell
+
+```bash
+./env-set-sed.zsh
 ```
 
 ## Deploy
@@ -36,6 +48,6 @@ kubectl apply -k kubernetes/overlays/mainnet/
 If there is a new image available, you can easily restart+update your deployments with the following command.
 
 ```bash
-kubectl rollout restart deployment $(kubectl get deployment --selector=app=oracle | grep -oE ".*-\w+\s" | tail +2)
-
+kubectl rollout restart deployment \
+$(kubectl get deployment --selector=app=oracle | grep -oE ".*-\w+\s" | tail +2)
 ```
