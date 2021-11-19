@@ -11,9 +11,7 @@ import MarkdownImage from "../../src/components/MarkdownImage";
 
 ## Oracle Queue
 
-An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. Oracles are arranged in a round-robin fashion, where once requested, the next N oracles in the queue are assigned to a feed. Oracle positions are periodically swapped to mitigate oracles being assigned to the same feeds each update cycle.
-
-A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial Switchboard DAO will cap queue sizes at 2048 and increase it as the network grows.
+An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial Switchboard DAO will cap queue sizes at 2048 and increase it as the network grows.
 
 ### Permission Account
 
@@ -25,9 +23,7 @@ Node between the internet and the solana blockchain responsible for fuliflling d
 
 ## Crank
 
-Solana has no mechanism to schedule transactions so a Crank is used to jump start the system. Any feed approved by the DAO is free to join an oracle queue’s crank. The Crank is a priority queue of data feed public keys ordered by the feeds next available update time. When cranked, Switchboard will look for any data feeds ready for an update and if successful, reward the user who called it. If no data feed is ready to be updated, the crankers transaction will fail and they could potentially lose their transaction fee. The crank is the scheduler behind the oracles and incentivizes users to help keep the system spinning.
-
-An oracle queue without a crank will need to manually update each aggregator on-command. An oracle queue can have multiple cranks but an aggregator can only be assigned to a single crank.
+Contains a collection of aggregators and provides the mechanism to jump start the system and look for any available updates. An oracle queue can have multiple cranks but an aggregator can only be assigned to a single crank.
 
 ## Aggregator
 

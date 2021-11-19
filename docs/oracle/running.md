@@ -41,7 +41,11 @@ kubectl apply -k kubernetes/overlays/mainnet/
 </TabItem>
 </Tabs>
 
+:::info
+
 **Note:** If this is your first time deploying to a given cluster then when you run kubectl apply, the custom resources won't be applied yet so you will get a few errors that say `no matches for kind` for those custom resources. Simply rerunning the deploy command will apply the manifest again and everything should complete with no errors.
+
+:::
 
 ## Update
 
