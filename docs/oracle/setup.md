@@ -10,11 +10,36 @@ Before deploying the application, we must first provision a kubernetes cluster w
 
 ## Dependencies
 
+### gcloud SDK
+
+You will need to install the google cloud SDK and have a Google Cloud Platform account
+
+- [Install gcloud SDK](https://cloud.google.com/sdk/docs/install)
+- [Google Cloud Platform Registration](https://console.cloud.google.com/freetrial/signup/tos)
+
+Verify it installed correctly with the following command:
+
+```bash
+gcloud --version
+```
+
 ### kubectl
 
-First we will need install kubectl, which is a command line tool that will let us provision a kubernetes cluster. Follow the link below and complete the installation steps for your operating system.
+You will need install kubectl, which is a command line tool that will let us provision a kubernetes cluster. If you have installed the gcloud SDK above, then you can install kubectl with the following command:
+
+```bash
+gcloud components install kubectl
+```
+
+You can also install kubectl manually using the following link:
 
 - **[Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)**
+
+Verify it installed correctly with the following command:
+
+```bash
+kubectl version --client
+```
 
 ### kubernetes manifest
 

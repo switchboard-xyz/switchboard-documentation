@@ -7,6 +7,10 @@ slug: /architecture/oracle
 
 Oracles are the gateway between a blockchain and the real world, providing the mechanisms to arrive at a reliable consensus for a single data point when given multiple sources. Oracles can then determine the most reliable value of the data point after examining the provided answer of each data source. In this way, oracles increase information integrity by removing the risk of a single point of failure or outlier.
 
+## Rewards
+
+Oracles are rewarded for their compute time to incentivize honest behavior. If enough oracles successfully respond to a data feed update request, an on-chain program aggregates the assigned oracle results and returns the median value as the final result. Each oracle is then scored based on their response. The variance threshold is dictated by the oracle queue and is used when determining the validity of an oracle’s response in relation to the accepted, median result. Oracles within the acceptable range are awarded whatever fee is set by the queue. Oracles who’s responses fall outside the acceptable range will be slashed and must forfeit a set amount of their staked capital. The slashing mechanism disincentivizes oracles from reporting dishonest data and helps protect the system from nodes who may have other incentives to return false data.
+
 ## OracleAccount Definition
 
 <table>
