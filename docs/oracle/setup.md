@@ -106,16 +106,11 @@ PAGERDUTY_KEY=""
     </td>
   </tr>
   <tr>
-    <td>GOOGLE_AUTH_CLIENT_ID</td>
+    <td>GOOGLE_AUTH_CLIENT_ID<br />GOOGLE_AUTH_CLIENT_SECRET</td>
     <td>
+    Google OAuth 2.0 credentials to provision our cluster for us <br />
       <a href="./google#authentication">Google Cloud Platform #Authentication</a>
       </td>
-  </tr>
-  <tr>
-    <td>GOOGLE_AUTH_CLIENT_SECRET</td>
-    <td>
-      <a href="./google#authentication">Google Cloud Platform #Authentication</a>
-    </td>
   </tr>
   <tr>
     <td>LOADBALANCER_IP</td>
@@ -144,18 +139,13 @@ PAGERDUTY_KEY=""
   <tr>
     <td>GRAFANA_ADMIN_PASSWORD</td>
     <td>
-      Password used to authenticate. You can set this yourself
+      Password used to authenticate. You can set this to any value
     </td>
   </tr>
   <tr>
-    <td>GRAFANA_TLS_CRT</td>
+    <td>GRAFANA_TLS_CRT<br />GRAFANA_TLS_KEY</td>
     <td>
-      <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
-    </td>
-  </tr>
-  <tr>
-    <td>GRAFANA_TLS_KEY</td>
-    <td>
+    TLS certificate to secure our grafana dashboard<br />
       <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
     </td>
   </tr>
