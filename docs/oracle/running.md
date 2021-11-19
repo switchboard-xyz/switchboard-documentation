@@ -4,12 +4,12 @@ sidebar_position: 80
 
 # Running
 
-## Inject Environment Variables
+## Build Manifest
 
 After completing the steps in the previous pages, you should have an env file with each of the variables defined. We will need to set all of the environment variables then inject them into the manifest files
 
 ```bash
-source .env; bash kubernetes/env-set.sh; rm kubernetes/tmp.txt
+source .env; bash env-set.sh; rm kubernetes/tmp.txt
 ```
 
 ## Deploy
