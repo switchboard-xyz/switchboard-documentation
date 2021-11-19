@@ -6,7 +6,11 @@ import MarkdownImage from "../../src/components/MarkdownImage";
 
 # Google Cloud Platform
 
-You will need a Google Cloud Platform account with the [Cloud SDK installed](https://cloud.google.com/sdk/docs/install). Once installed, login to your google cloud account:
+You will need a Google Cloud Platform account with the [Cloud SDK installed](https://cloud.google.com/sdk/docs/install).
+
+## Login
+
+Once installed, login to your google cloud account:
 
 ```bash
 gcloud auth login
@@ -26,11 +30,31 @@ Set it as your default project
 gcloud config set project switchboard-oracle-cluster
 ```
 
+[Google - gcloud projects create](https://cloud.google.com/sdk/gcloud/reference/projects/create)
+
+## gcloud Config
+
+Set the default zone using [list of regions and zones](https://cloud.google.com/compute/docs/regions-zones#available)
+
+```bash
+gcloud config set compute/zone us-west1-a # replace with your closest region
+```
+
+Set the default region using [list of regions and zones](https://cloud.google.com/compute/docs/regions-zones#available)
+
+```bash
+gcloud config set compute/region us-west1 # replace with your closest region
+```
+
+[Google - Set default settings for the gcloud tool](https://cloud.google.com/kubernetes-engine/docs/quickstart#autopilot)
+
 ## Billing
 
 You will need to enable billing for the project before enabling any services:
 
-https://console.cloud.google.com/billing/enable?project=switchboard-oracle-cluster
+- https://console.cloud.google.com/billing/enable?project=switchboard-oracle-cluster
+
+[Google - APIs and billing](https://support.google.com/googleapi/answer/6158867?hl=en)
 
 ## Services
 
@@ -60,6 +84,8 @@ Note your client ID and secret for the ENV file and download the JSON for safeke
 
 > ![GCP Credentials Create OAuth](/img/gcp/OAuth_Client_Credentials.png)
 
+[Google - Setting up OAuth 2.0](https://support.google.com/cloud/answer/6158849?authuser=3)
+
 ## Static IP
 
 You will need to reserve a static IP address for your grafana instance
@@ -68,8 +94,10 @@ You will need to reserve a static IP address for your grafana instance
 gcloud compute addresses create load-balancer --project=switchboard-oracle-cluster
 gcloud compute addresses list
 # NAME           ADDRESS/RANGE
-# load-balancer  123.123.123.123
+# load-balancer  123.123.123.123 ($LOADBALANCER_IP)
 ```
+
+<!-- Could we use a grep to grab this value easier? -->
 
 This will be your `$LOADBALANCER_IP`
 
@@ -122,7 +150,7 @@ gcloud secrets versions add oracle-payer-secret --data-file=secrets/authority-ke
 Finally you will need to create a new kubernetes cluster
 
 ```bash
-gcloud container clusters create switchboard-cluster
+gcloud container clusters create-auto switchboard-cluster
 ```
 
 then connect to it
@@ -130,3 +158,5 @@ then connect to it
 ```bash
 gcloud container clusters get-credentials switchboard-cluster --project switchboard-oracle-cluster
 ```
+
+[Google - Create a GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart#autopilot)
