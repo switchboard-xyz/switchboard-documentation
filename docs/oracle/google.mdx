@@ -150,13 +150,13 @@ gcloud secrets versions add oracle-payer-secret --data-file=secrets/authority-ke
 Finally you will need to create a new kubernetes cluster
 
 ```bash
-gcloud container clusters create-auto switchboard-cluster
+gcloud container clusters create-auto switchboard-cluster --region us-west1 --service-account=svc-account@switchboard-oracle-cluster.iam.gserviceaccount.com
 ```
 
 then connect to it
 
 ```bash
-gcloud container clusters get-credentials switchboard-cluster --project switchboard-oracle-cluster
+gcloud container clusters get-credentials switchboard-cluster --project switchboard-oracle-cluster --region us-west1
 ```
 
 [Google - Create a GKE cluster](https://cloud.google.com/kubernetes-engine/docs/quickstart#autopilot)
