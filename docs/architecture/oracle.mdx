@@ -4,3 +4,106 @@ slug: /architecture/oracle
 ---
 
 # Oracle
+
+Oracles are the gateway between a blockchain and the real world, providing the mechanisms to arrive at a reliable consensus for a single data point when given multiple sources. Oracles can then determine the most reliable value of the data point after examining the provided answer of each data source. In this way, oracles increase information integrity by removing the risk of a single point of failure or outlier.
+
+## OracleAccount Definition
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Name of the oracle for easier identification</td>
+  </tr>
+  <tr>
+    <td>Metadata</td>
+    <td>Reserved for metadata</td>
+  </tr>
+  <tr>
+    <td>Oracle Authority</td>
+    <td>Public key of the authority who owns the oracle account</td>
+  </tr>
+  <tr>
+    <td>Last Heartbeat</td>
+    <td>Timestamp when the oracle last heartbeated</td>
+  </tr>
+  <tr>
+    <td>Number in Use</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Token Account</td>
+    <td>Stake account and reward/slashing wallet</td>
+  </tr>
+  <tr>
+    <td>Queue Public Key</td>
+    <td>
+      Public key of the oracle queue who has granted it permission to use its
+      resources
+    </td>
+  </tr>
+  <tr>
+    <td>Metrics</td>
+    <td>See OracleMetrics table below</td>
+  </tr>
+</table>
+
+## OracleMetrics Definition
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>Consecutive Success</td>
+    <td>Number of consecutive successful update request</td>
+  </tr>
+  <tr>
+    <td>Consecutive Error</td>
+    <td>Number of consecutive update request that resulted in an error</td>
+  </tr>
+  <tr>
+    <td>Consecutive Disagreement</td>
+    <td>
+      Number of consecutive update request that resulted in a disagreement with
+      the accepted median result
+    </td>
+  </tr>
+  <tr>
+    <td>Consecutive Late Response</td>
+    <td>
+      Number of consecutive update request that were posted on-chain late and
+      not included in an accepted result
+    </td>
+  </tr>
+  <tr>
+    <td>Consecutive Failure</td>
+    <td>Number of consecutive update request that resulted in a failure</td>
+  </tr>
+  <tr>
+    <td>Total Success</td>
+    <td>Total number of successful update request</td>
+  </tr>
+  <tr>
+    <td>Total Error</td>
+    <td>Total number of update request that resulted in an error</td>
+  </tr>
+  <tr>
+    <td>Total Disagreement</td>
+    <td>
+      Total number of update request that resulted in a disagreement with the
+      accepted median result
+    </td>
+  </tr>
+  <tr>
+    <td>Total Late Response</td>
+    <td>
+      Total number of update request that were posted on-chain late and not
+      included in an accepted result
+    </td>
+  </tr>
+</table>
