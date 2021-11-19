@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="mainnet" label="Main-net" default>
 
 ```bash
-kubectl apply -k overlays/mainnet/
+kubectl apply -k kubernetes/overlays/mainnet/
 ```
 
 </TabItem>

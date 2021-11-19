@@ -11,8 +11,8 @@ Grafana is a visualization tool to view your cluster.
 We will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
 
 ```bash
-openssl req  -nodes -new -x509 -keyout ./certs/keystore.key -out \
-    ./certs/keystore.pem -subj '/CN=mydomain.net' -days 3650
+openssl req  -nodes -new -x509 -keyout ./secrets/keystore.key -out \
+    ./secrets/keystore.pem -subj '/CN=mydomain.net' -days 3650
 ```
 
 You should see two files in the certs directory:

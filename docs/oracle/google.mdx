@@ -87,13 +87,13 @@ gcloud iam service-accounts list
 Now save it to our filesystem
 
 ```bash
-gcloud iam service-accounts keys create ./svc-account.json  --iam-account=svc-account@switchboard-oracle-cluster.iam.gserviceaccount.com
+gcloud iam service-accounts keys create secrets/svc-account.json  --iam-account=svc-account@switchboard-oracle-cluster.iam.gserviceaccount.com
 ```
 
 Now convert the json file to a base64 string to store in `$SERVICE_ACCOUNT_BASE64`
 
 ```bash
-base64 svc-account.json
+base64 secrets/svc-account.json
 ```
 
 [Google - Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
@@ -103,7 +103,7 @@ base64 svc-account.json
 You will need to store your solana keypair in Google Secret Manager for enhanced security. If you are using another keypair replace `--data-file` with your relevant path.
 
 ```bash
-gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --data-file=authority-keypair.json
+gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --data-file=secrets/authority-keypair.json
 ```
 
 :::note
@@ -111,7 +111,7 @@ gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --da
 You can always update your secret by running the command:
 
 ```bash
-gcloud secrets versions add oracle-payer-secret --data-file=authority-keypair.json
+gcloud secrets versions add oracle-payer-secret --data-file=secrets/authority-keypair.json
 ```
 
 :::

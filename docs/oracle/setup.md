@@ -34,7 +34,7 @@ You should have a highly available RPC server to process any transactions.
 You will need a solana keypair with an active balance. You can create a new keypair using the [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools) and running the following command:
 
 ```bash
-solana-keygen new --outfile authority-keypair.json
+solana-keygen new --outfile secrets/authority-keypair.json
 ```
 
 This will output a keypair file to the directory where you ran the command. Make note of the filesystem path for future cli commands. More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
