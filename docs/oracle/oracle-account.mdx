@@ -6,13 +6,26 @@ sidebar_position: 70
 
 ## Create Oracle
 
-Run the following command
+Run the following command, where
+
+- `--authorityKeypair` is the filesystem path to your wallet that will be the authority for the new oracle account
+- `--queuePubkey` is the oracle queue you will be joining
 
 ```bash
-ts-node create-oracle.ts --authorityKeypair=secrets/authority-keypair.json --queuePubkey="HXyq4Jmue3nPB1DDfmf8gaG5aiVT1Ydw3qCJfFzYSGhy"
+ts-node create-oracle.ts --authorityKeypair=secrets/authority-keypair.json \
+--queuePubkey="HXyq4Jmue3nPB1DDfmf8gaG5aiVT1Ydw3qCJfFzYSGhy"
+# ORACLE_KEY=XXXXXXX...XXXXXX
 ```
 
+Copy the output to your `.env` file and run `source .env`
+
 ## Stake
+
+Now you need to fund the `$ORACLE_TOKEN_ACCOUNT` with the minimum stake before joining the queue. First, wrap the solana, then transfer it to your new token account.
+
+```bash
+spl-token wrap 12 secrets/authority-keypair.json
+```
 
 ## Funding / Withdrawing
 

@@ -8,7 +8,7 @@ Grafana is a visualization tool to view your cluster.
 
 ## TLS Certificate
 
-We will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
+You will need to generate a TLS certificate. You should already have [openssl installed](https://www.openssl.org/source/)
 
 ```bash
 openssl req  -nodes -new -x509 -keyout ./secrets/keystore.key -out \
@@ -26,7 +26,7 @@ You should see two files in the certs directory:
 
 To simplify the deployment, set the `$GRAFANA_HOSTNAME` to `$LOADBALANCER_IP`.
 
-Optionally, you can configure your own domain to point to the `$LOADBALANCER_IP` that we configured.
+Optionally, you can configure your own domain to point to the `$LOADBALANCER_IP` that you configured.
 
 - Go to your domain management solution
 - Create a DNS A record with `$LOADBALANCER_IP`

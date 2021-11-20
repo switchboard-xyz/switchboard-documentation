@@ -36,7 +36,7 @@ let dateFeedAccount = await createDataFeed(
 
 ## Creating Data Feed Job
 
-Now we will create and add a job to the data feed.
+Now you will create and add a job to the data feed.
 
 <Tabs>
 <TabItem value="ts" label="Typescript" default>

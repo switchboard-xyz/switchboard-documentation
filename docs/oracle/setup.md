@@ -4,7 +4,7 @@ sidebar_position: 25
 
 # Setup
 
-Before deploying the application, we must first provision a kubernetes cluster with the relevant credentials. There are no exotic requirements for this cluster and to date, it has be able to run on an auto pilot GKE cluster without issue.
+Before deploying the application, you must first provision a kubernetes cluster with the relevant credentials. There are no exotic requirements for this cluster and to date, it has be able to run on an auto pilot GKE cluster without issue.
 
 ![Kubernetes Setup Flow](/img/gcp/K8s_Setup_Flow.png)
 
@@ -66,7 +66,7 @@ This will output a keypair file to the directory where you ran the command. Make
 
 ## Environment
 
-Along with the kubernetes manifest, we will also need to capture the required environment variables. In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
+Along with the kubernetes manifest, you will also need to capture the required environment variables. In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
 
 ```bash env title=".env"
 # Solana Config

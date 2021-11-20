@@ -6,7 +6,7 @@ sidebar_position: 80
 
 ## Build Manifest
 
-After completing the steps in the previous pages, you should have an env file with each of the variables defined. We will need to set all of the environment variables then inject them into the manifest files
+After completing the steps in the previous pages, you should have an env file with each of the variables defined.You will need to set all of the environment variables then inject them into the manifest files
 
 ```bash
 source .env
@@ -26,7 +26,7 @@ If Zsh is your default shell
 
 ## Deploy
 
-We are now ready to provision our kubernetes cluster. The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
+You are now ready to provision our kubernetes cluster. The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
