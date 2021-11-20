@@ -8,6 +8,7 @@ interface MarkdownImageProps {
   unstyled?: boolean;
   lightBg?: string;
   darkBg?: string;
+  sx?: any;
 }
 
 const MarkdownImage = (props: MarkdownImageProps) => {
@@ -27,6 +28,12 @@ const MarkdownImage = (props: MarkdownImageProps) => {
       boxShadow:
         "0px 3px 1px -2px pink,0px 2px 2px 0px rgb(99, 91, 255),0px 1px 5px 0px rgb(99, 91, 255)",
     };
+  }
+  if(props.sx) {
+    sx = {
+      ...sx,
+      ...props.sx
+    }
   }
 
   return (
