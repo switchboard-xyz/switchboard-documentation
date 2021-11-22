@@ -1,62 +1,62 @@
 default:
   before_script:
-  - yarn install --cache-folder .yarn-cache
+    - yarn install --cache-folder .yarn-cache
   cache:
-  - key:
-      files:
-      - package.json
-    paths:
-    - node_modules
-    - public
-  - key:
-      files:
-      - yarn.lock
-    paths:
-    - .yarn-cache
+    - key:
+        files:
+          - package.json
+      paths:
+        - node_modules
+        - public
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - .yarn-cache
   image:
     entrypoint: [""]
     name: equalos/docusaurus:slim-alpine
 
 pages:
   after_script:
-  # https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets
-  - find public -regex '.*\.\(css\|htm\|html\|ics\|js\|json\|svg\|text\|toml\|txt\|xml\|yaml\|yml\)$' -type f -exec brotli -fk {} \; -exec gzip -fk {} \;
+    # https://docs.gitlab.com/ee/user/project/pages/introduction.html#serving-compressed-assets
+    - find public -regex '.*\.\(css\|htm\|html\|ics\|js\|json\|svg\|text\|toml\|txt\|xml\|yaml\|yml\)$' -type f -exec brotli -fk {} \; -exec gzip -fk {} \;
   artifacts:
     paths:
-    - public
+      - public
   rules:
-  - if: '$CI_COMMIT_BRANCH == "main"'
-  script: yarn run build --out-dir public
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  script: yarn run build
   stage: deploy
   variables:
     # https://docs.gitlab.com/ee/user/project/pages/introduction.html#cannot-play-media-content-on-safari
     ARTIFACT_COMPRESSION_LEVEL: fastest
-    FF_USE_FASTZIP: 'true'
+    FF_USE_FASTZIP: "true"
     # https://rust-lang.github.io/mdBook/format/configuration/environment-variables
     TZ: America/New_York
 
 test:
   artifacts:
     paths:
-    - test
+      - test
   cache:
-  - key:
-      files:
-      - package.json
-    paths:
-    - node_modules
-    - test
-  - key:
-      files:
-      - yarn.lock
-    paths:
-    - .yarn-cache
+    - key:
+        files:
+          - package.json
+      paths:
+        - node_modules
+        - test
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - .yarn-cache
   inherit:
     default:
-    - before_script
-    - image
+      - before_script
+      - image
   rules:
-  - if: '$CI_COMMIT_BRANCH != "main"'
+    - if: '$CI_COMMIT_BRANCH != "main"'
   script: yarn run build --out-dir test
   stage: test
   variables:
@@ -64,4 +64,4 @@ test:
 
 workflow:
   rules:
-  - if: '$CI_COMMIT_BRANCH'
+    - if: "$CI_COMMIT_BRANCH"
