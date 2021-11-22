@@ -16,6 +16,10 @@
   --ifm-code-font-size: 95%;
 }
 
+.docs-doc-page tr:nth-child(even) td:nth-child(n + 2) {
+  opacity: 0.75;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
