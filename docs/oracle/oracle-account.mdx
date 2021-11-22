@@ -12,14 +12,28 @@ Run the following command, where
 - `--queuePubkey` is the oracle queue you will be joining. See [Switchboard DAO](../dao) for a list of available queues
 
 ```bash
-ts-node create-oracle.ts --authorityKeypair=secrets/authority-keypair.json \
+ts-node oracle-create.ts --authorityKeypair=secrets/authority-keypair.json \
 --queuePubkey="GhYg3R1V6DmJbwuc57qZeoYG6gUuvCotUF1zU3WCj98U"
-# ORACLE_KEY=XXXXXXX...XXXXXX
 ```
 
-Copy the output to your `.env` file and run `source .env`
+Copy the output to your `.env` file and run `source .env` to set the variables for the following commands.
 
-## Stake
+Your output should look similar to below
+
+```bash env
+# wrapped SOL, used for staking/rewards
+SWITCHBOARD_MINT="So11111111111111111111111111111111111111112"
+# used to fund our oracle
+AUTHORITY_TOKEN_ACCOUNT="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# public key of the oracle account
+ORACLE_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# wSOL token account for the newly created oracle
+ORACLE_TOKEN_ACCOUNT="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+# permission account to join the selected queue
+ORACLE_PERMISSION_ACCOUNT="XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+
+## Funding
 
 Now you need to fund the `$ORACLE_TOKEN_ACCOUNT` with the minimum stake before joining the queue. First, wrap the solana, then transfer it to your new token account.
 
@@ -27,7 +41,29 @@ Now you need to fund the `$ORACLE_TOKEN_ACCOUNT` with the minimum stake before j
 spl-token wrap 12 secrets/authority-keypair.json
 ```
 
-## Funding / Withdrawing
+Run the following command to transfer 10 wSOL to your oracle's token account
+
+```bash
+spl-token transfer --owner secrets/authority-keypair.json \
+${SWITCHBOARD_MINT} 10 ${ORACLE_TOKEN_ACCOUNT}
+```
+
+:::note
+
+You can view your token balance using the commands
+
+```bash
+spl-token balance --address ${AUTHORITY_TOKEN_ACCOUNT}
+spl-token balance --address ${ORACLE_TOKEN_ACCOUNT}
+```
+
+:::
+
+## Withdrawing
+
+```bash
+spl-token unwrap ${AUTHORITY_TOKEN_ACCOUNT} secrets/authority-keypair.json
+```
 
 ## DAO Approval
 

@@ -138,15 +138,7 @@ You will need to store your solana keypair in Google Secret Manager for enhanced
 gcloud secrets create oracle-payer-secret --replication-policy="automatic"  --data-file=secrets/authority-keypair.json
 ```
 
-:::note
 
-You can always update your secret by running the command:
-
-```bash
-gcloud secrets versions add oracle-payer-secret --data-file=secrets/authority-keypair.json
-```
-
-:::
 
 You can view your `$GOOGLE_PAYER_SECRET_PATH` in the [GCP console](https://console.cloud.google.com/security/secret-manager/secret/oracle-payer-secret/versions&project=switchboard-oracle-cluster) or by running the command
 
