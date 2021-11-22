@@ -12,28 +12,11 @@ After completing the steps in the previous pages, you should have an env file wi
 source devnet.env
 ```
 
-Run the following
+Run the following command, where devnet is the name of this configuration matching your `.env` file.
 
 ```bash
 ./env-set.sh devnet
 ```
-
-## Deploy
-
-You are now ready to provision our kubernetes cluster. The Switchboard deployment stack uses kustomize to simplify the configuration and deployment of the complete stack (oracle + victoria metrics + grafana) for end users. Run one of the following commands depending on which Solana cluster you plan on deploying your oracle to:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs>
-<TabItem value="mainnet" label="Main-net" default>
-
-```bash
-kubectl apply -k kubernetes/overlays/mainnet/
-```
-
-</TabItem>
-</Tabs>
 
 ## Update
 
