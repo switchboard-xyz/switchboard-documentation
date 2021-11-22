@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Button, Tooltip, Typography } from "@mui/material";
 
