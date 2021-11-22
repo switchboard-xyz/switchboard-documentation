@@ -66,9 +66,9 @@ This will output a keypair file to the directory where you ran the command. Make
 
 ## Environment
 
-Along with the kubernetes manifest, you will also need to capture the required environment variables. In the root directory of the repository, create an `.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
+Along with the kubernetes manifest, you will also need to capture the required environment variables. In the root directory of the repository, create a `devnet.env` file to keep track of our kubernetes environment. The following steps will walk you through where to locate these variables for your own deployment.
 
-```bash env title=".env"
+```bash env title="devnet.env"
 # Solana Config
 RPC_URL=""
 ORACLE_KEY=""

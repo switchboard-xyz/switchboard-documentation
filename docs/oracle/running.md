@@ -6,22 +6,16 @@ sidebar_position: 80
 
 ## Build Manifest
 
-After completing the steps in the previous pages, you should have an env file with each of the variables defined.You will need to set all of the environment variables then inject them into the manifest files
+After completing the steps in the previous pages, you should have an env file with each of the variables defined. You will need to set all of the environment variables then inject them into the manifest files
 
 ```bash
-source .env
+source devnet.env
 ```
 
-If bash is your default shell
+Run the following
 
 ```bash
-./env-set.sh
-```
-
-If Zsh is your default shell
-
-```bash
-./env-set-sed.zsh
+./env-set.sh devnet
 ```
 
 ## Deploy
@@ -40,12 +34,6 @@ kubectl apply -k kubernetes/overlays/mainnet/
 
 </TabItem>
 </Tabs>
-
-:::info
-
-**Note:** If this is your first time deploying to a given cluster then when you run kubectl apply, the custom resources won't be applied yet so you will get a few errors that say `no matches for kind` for those custom resources. Simply rerunning the deploy command will apply the manifest again and everything should complete with no errors.
-
-:::
 
 ## Update
 
