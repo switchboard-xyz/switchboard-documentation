@@ -73,7 +73,13 @@ In the root directory of the repository, create a `$ENV_NAME.env` file to keep t
 ```bash env title="devnet.env"
 # Solana Config
 RPC_URL=""
+CLUSTER=""
+# Switchboard Config
 ORACLE_KEY=""
+SWITCHBOARD_MINT=""
+AUTHORITY_TOKEN_ACCOUNT=""
+ORACLE_TOKEN_ACCOUNT=""
+ORACLE_PERMISSION_ACCOUNT=""
 # Google Cloud Platform
 GOOGLE_AUTH_CLIENT_ID=""
 GOOGLE_AUTH_CLIENT_SECRET=""
@@ -101,9 +107,25 @@ PAGERDUTY_KEY=""
     <td>RPC_URL</td>
     <td>Solana RPC URL that dictates which cluster is used. The default RPC pools should be avoided at all cost as you will quickly hit the rate limits and risk being slashed</td>
   </tr>
+    <tr>
+    <td>CLUSTER</td>
+    <td>Solana cluster you will be running an oracle on (mainnet-beta/devnet)</td>
+  </tr>
   <tr>
     <td>ORACLE_KEY</td>
     <td>Public key of the oracle account that has been granted permissions to use an oracle queue <br />
+    <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
+    </td>
+  </tr>
+    <tr>
+    <td>ORACLE_PERMISSION_ACCOUNT</td>
+    <td>Public key of the permission account that allows an oracle to use an oracle queue's resources <br />
+    <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
+    </td>
+  </tr>
+    <tr>
+    <td>SWITCHBOARD_MINT<br />ORACLE_TOKEN_ACCOUNT<br />AUTHORITY_TOKEN_ACCOUNT</td>
+    <td>SPL token mint used for oracle staking and rewards<br />
     <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
     </td>
   </tr>
