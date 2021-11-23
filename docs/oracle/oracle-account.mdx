@@ -8,12 +8,12 @@ sidebar_position: 70
 
 Run the following command, where
 
-- `--config` is the name of your `.env` file in the root directory
+- `--env` is the name of the .env file to load a configuration from
 - `--authorityKeypair` is the filesystem path to your wallet that will be the authority for the new oracle account
 - `--queuePubkey` is the oracle queue you will be joining. See [Switchboard DAO](../dao) for a list of available queues
 
 ```bash
-ts-node oracle-create.ts --config=devnet --authorityKeypair=secrets/authority-keypair.json \
+ts-node oracle-create.ts --env=devnet --authorityKeypair=secrets/authority-keypair.json \
 --queuePubkey="GhYg3R1V6DmJbwuc57qZeoYG6gUuvCotUF1zU3WCj98U"
 ```
 
