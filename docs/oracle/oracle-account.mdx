@@ -62,6 +62,15 @@ spl-token balance --address ${ORACLE_TOKEN_ACCOUNT}
 
 ## Withdrawing
 
+Run the following command
+
+```bash
+ts-node oracle-withdraw --amount=1 --authorityKeypair=secrets/authority-keypair.json \
+--oracleKey="${ORACLE_KEY}" --rpcUrl=${RPC_URL}
+```
+
+then unwrap your SOL
+
 ```bash
 spl-token unwrap ${AUTHORITY_TOKEN_ACCOUNT} secrets/authority-keypair.json
 ```
