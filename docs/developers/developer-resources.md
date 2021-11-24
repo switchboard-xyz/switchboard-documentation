@@ -7,7 +7,7 @@ slug: /developers
 
 ## Javascript / Typescript
 
-### switchboard-api
+### switchboardv2-api
 
 **Description:** TBD
 
@@ -16,37 +16,23 @@ slug: /developers
 **Install:** Run the following command
 
 ```bash npm2yarn
-npm install @switchboard-xyz/switchboard-api
+npm install @switchboard-xyz/switchboardv2-api
 ```
 
 ## Rust
 
-### switchboard-program
+### switchboard-aggregator
 
 **Description:** TBD
 
-**Documentation:** [docs.rs/switchboard-program](https://docs.rs/switchboard-program)
+**Documentation:** [docs.rs/switchboard-aggregator](https://docs.rs/switchboard-aggregator)
 
 **Install:**
 Add the following line to your Cargo.toml
 
 ```bash toml
 [dependencies]
-switchboard-program = "0.1.52"
-```
-
-### switchboard-utils
-
-**Description:** TBD
-
-**Documentation:** [docs.rs/switchboard-utils](https://docs.rs/switchboard-utils)
-
-**Install:**
-Add the following line to your Cargo.toml
-
-```bash toml
-[dependencies]
-switchboard-utils= "0.1.26"
+switchboard-aggregator = "0.1.6"
 ```
 
 ## Example Repos
@@ -55,4 +41,8 @@ switchboard-utils= "0.1.26"
 
 **Description:** TBD
 
-**Documentation:** [github.com/switchboard-xyz/examples](https://github.com/switchboard-xyz/examples)
+**Documentation:** [github.com/switchboard-xyz/switchboard-v2-example](https://github.com/switchboard-xyz/switchboard-v2-example)
+
+```bash
+git clone https://github.com/switchboard-xyz/switchboard-v2-example
+```

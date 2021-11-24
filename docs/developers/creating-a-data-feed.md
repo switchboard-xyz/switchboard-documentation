@@ -5,6 +5,9 @@ slug: /creating-a-data-feed
 
 # Creating a Data Feed
 
+<!--
+# Creating a Data Feed
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -107,4 +110,4 @@ await setDataFeedConfigs(connection, payerAccount, dataFeedAccount, {
 
 </TabItem>
 
-</Tabs>
+</Tabs> -->
