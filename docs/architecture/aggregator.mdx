@@ -75,8 +75,8 @@ When creating a lease contract, the publisher specifies a withdrawal authority t
   <tr>
     <td>Start After</td>
     <td>
-      Timestampt to start feed updates at. Useful if you are resolving a sport
-      event that ends around a certain time
+      Timestamp to start feed updates at. Useful if you are resolving an event
+      that ends around a certain time
     </td>
   </tr>
   <tr>
@@ -98,7 +98,7 @@ When creating a lease contract, the publisher specifies a withdrawal authority t
     <td>Consecutive Failure Count</td>
     <td>
       Counter for the number of consecutive failures before a feed is removed
-      from a queue
+      from a queue. If set to 0, failed feeds will remain on the queue.
     </td>
   </tr>
   <tr>
