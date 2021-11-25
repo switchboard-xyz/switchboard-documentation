@@ -1,0 +1,29 @@
+---
+sidebar_position: 30
+slug: /updating-a-data-feed
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Updating a Data Feed
+
+<Tabs>
+<TabItem value="ts" label="Typescript" default>
+
+```ts
+import { updateFeed } from "@switchboard-xyz/switchboard-api";
+
+// ...
+
+await updateFeed(
+  connection,
+  payerAccount,
+  dataFeedPubkey,
+  authorizationPubkey // optional
+);
+```
+
+</TabItem>
+
+</Tabs>
