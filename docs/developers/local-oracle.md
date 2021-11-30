@@ -42,8 +42,11 @@ services:
       - ORACLE_KEY=${ORACLE_KEY}
       # Filesystem path to keypair file that will pay for txns
       - PAYER_SECRET_PATH="../payer-keypair.json"
-      # Highly available RPC node to process transactions
+      # Highly available RPC node to process transactions, capable of
+      #   supporting websocket connections
       - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
+      # Optional, separate URL for web socket connections
+      # - WS_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
     volumes:
       - ./configs.json:/configs.json
 ```
