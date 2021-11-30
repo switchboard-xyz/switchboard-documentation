@@ -36,7 +36,7 @@ services:
       - LIVE=1
       # devnet, mainnet-beta
       - CLUSTER=devnet
-      # Seconds
+      # Seconds between heartbeats, queue dependent
       - HEARTBEAT_INTERVAL=15
       # OracleAccount PublicKey
       - ORACLE_KEY=${ORACLE_KEY}
