@@ -16,7 +16,7 @@
   --ifm-code-font-size: 95%;
 }
 
-.docs-doc-page tr:nth-child(even) td:nth-child(n + 2) {
+html[data-theme="dark"] .docs-doc-page tr:nth-child(even) td:nth-child(n + 2) {
   opacity: 0.75;
 }
 
