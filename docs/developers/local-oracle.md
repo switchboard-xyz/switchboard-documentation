@@ -31,19 +31,21 @@ services:
     image: "switchboardlabs/node:dev-v2"
     network_mode: host
     restart: always
-    secrets:
-      - PAYER_SECRETS
     environment:
+      # Set to 0 for localnet
       - LIVE=1
+      # devnet, mainnet-beta
       - CLUSTER=devnet
-      - HEARTBEAT_INTERVAL=15 # Seconds
+      # Seconds
+      - HEARTBEAT_INTERVAL=15
+      # OracleAccount PublicKey
       - ORACLE_KEY=${ORACLE_KEY}
-      # - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT> # OPTIONAL
+      # Filesystem path to keypair file that will pay for txns
+      - PAYER_SECRET_PATH="../payer-keypair.json"
+      # Highly available RPC node to process transactions
+      - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
     volumes:
       - ./configs.json:/configs.json
-secrets:
-  PAYER_SECRETS:
-    file: ./node-keypair.json
 ```
 
 ## Running
