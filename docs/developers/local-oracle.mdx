@@ -1,0 +1,252 @@
+---
+sidebar_position: 5
+---
+
+# Local Oracle
+
+You can run an oracle locally and assign it to your own oracle queue to test how your porgram may operate in production. Mainnet oracles should always be run on a cloud provider with redundancy to avoid unintentional slashing.
+
+## Solana Keypair
+
+You will need a Solana keypair with an active balanace.
+
+```bash
+solana-keygen new --outfile node-keypair.json
+```
+
+:::tip
+
+If you are on devnet, you can request some free SOL: `solana airdrop 5 node-keypair.json`
+
+:::
+
+## Docker
+
+To run an oracle in a development environment, you will need to install [Docker-Compose](https://docs.docker.com/compose/install/).
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+<TabItem value="local" label="Local Machine" default>
+
+```yaml title="docker-compose.yml"
+version: "3.3"
+services:
+  switchboard:
+    image: "switchboardlabs/node:dev-v2"
+    network_mode: host
+    restart: always
+    environment:
+      # See table below for definitions
+      - LIVE=1
+      - CLUSTER=devnet
+      - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
+      - ORACLE_KEY=${ORACLE_KEY}
+      - HEARTBEAT_INTERVAL=15
+      - PAYER_SECRET_PATH="../payer-keypair.json"
+    volumes:
+      - ./configs.json:/configs.json
+```
+
+</TabItem>
+<TabItem value="gcp" label="Google Container">
+
+```yaml title="docker-compose.yml"
+version: "3.3"
+services:
+  switchboard:
+    image: "switchboardlabs/node:dev-v2"
+    network_mode: host
+    restart: always
+    environment:
+      # See table below for definitions
+      - LIVE=1
+      - CLUSTER=devnet
+      - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
+      - ORACLE_KEY=${ORACLE_KEY}
+      - HEARTBEAT_INTERVAL=15
+      - GOOGLE_PAYER_SECRET_PATH="projects/202232388340/secrets/oracle-payer-secret"
+      # GCP resource path containing your configuration bucket
+      - GCP_CONFIG_BUCKET=""
+```
+
+</TabItem>
+
+</Tabs>
+
+<details open>
+  <summary>List of docker environment variables</summary>
+  <table>
+    <tr>
+      <th>Variable Name</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td>LIVE</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>
+        <br />
+        <b>Type</b> - Flag (0 / 1)
+        <br />
+        Set to 0 for localnet, 1 for devnet/mainnet-beta
+      </td>
+    </tr>
+    <tr>
+      <td>CLUSTER</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>
+        <br />
+        <b>Type</b> - String (devnet / mainnet-beta)
+        <br />
+        Solana cluster you will be running an oracle on (mainnet-beta/devnet)
+      </td>
+    </tr>
+    <tr>
+      <td>RPC_URL</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>
+        <br />
+        <b>Type</b> - URL
+        <br />
+        Solana RPC URL that must be capable of supporting websockets. The
+        default RPC pools should be avoided at all cost as you will quickly hit
+        the rate limits and risk being slashed
+      </td>
+    </tr>
+    <tr>
+      <td>WS_URL</td>
+      <td>
+        <b>
+          <u>Optional</u>
+        </b>
+        <br />
+        <b>Type</b> - URL
+        <br />
+        Websocket URL to connect to a Solana RPC server. If not provided, oracle
+        will fallback to RPC_URL
+      </td>
+    </tr>
+    <tr>
+      <td>BACKUP_MAINNET_RPC</td>
+      <td>
+        <b>
+          <u>Optional</u>
+        </b>
+        <br />
+        <b>Type</b> - URL
+        <br />
+        Backup RPC URL in case of network congestion
+      </td>
+    </tr>
+    <tr>
+      <td>ORACLE_KEY</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>
+        <br />
+        <b>Type</b> - Public Key
+        <br />
+        Public key of the oracle account that has been granted permissions to
+        use an oracle queue
+      </td>
+    </tr>
+    <tr>
+      <td>HEARTBEAT_INTERVAL</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>
+        <br />
+        <b>Type</b> - Number (seconds)
+        <br />
+        Seconds between oracle heartbeats. Queues have different oracle
+        heartbeat requirements. Recommended value is 15
+      </td>
+    </tr>
+    <tr>
+      <td>PAYER_SECRET_PATH</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>{" "}
+        unless using $GOOGLE_PAYER_SECRET_PATH
+        <br />
+        <b>Type</b> - Filesystem Path
+        <br />
+        Filesystem path to keypair file that will pay for on-chain txns
+      </td>
+    </tr>
+    <tr>
+      <td>GOOGLE_PAYER_SECRET_PATH</td>
+      <td>
+        <b>
+          <u>Required</u>
+        </b>{" "}
+        unless using $PAYER_SECRET_PATH
+        <br />
+        <b>Type</b> - GCP Resource Path
+        <br />
+        Google cloud resource to manage your keypair securely.
+        <br />
+        <a href="../oracle/google#google-secret-manager">
+          Google Cloud Platform #Google Secret Manager
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>GCP_CONFIG_BUCKET</td>
+      <td>
+        <b>
+          <u>Optional</u>
+        </b>
+        <br />
+        <b>Type</b> - GCP Resource Path
+        <br />
+        Google cloud storage bucket used to persist configuration and logs
+        between deployments
+      </td>
+    </tr>
+    <tr>
+      <td>METRICS_EXPORTER</td>
+      <td>
+        <b>
+          <u>Optional</u>
+        </b>
+        <br />
+        <b>Type</b> - gcp / opentelemetry-collector / prometheus [default]
+        <br />
+        Dictates which metric suited to aggregate resource metrics defined in:
+        <br />
+        <a href="../oracle/monitor">Oracle - Monitoring</a>
+      </td>
+    </tr>
+    <tr>
+      <td>VERBOSE</td>
+      <td>
+        <b>
+          <u>Optional</u>
+        </b>
+        <br />
+        <b>Type</b> - Flag (0 / 1)
+        <br />
+        Set to 1 to increase the level of logging
+      </td>
+    </tr>
+  </table>
+</details>
+
+## Running
+
+Run the following command to start the container
+
+```bash
+docker-compose up
+```
