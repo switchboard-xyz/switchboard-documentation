@@ -41,7 +41,7 @@ services:
       # See table below for definitions
       - LIVE=1
       - CLUSTER=devnet
-      - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
+      - RPC_URL=${RPC_URL}
       - ORACLE_KEY=${ORACLE_KEY}
       - HEARTBEAT_INTERVAL=15
       - PAYER_SECRET_PATH="../payer-keypair.json"
@@ -63,11 +63,10 @@ services:
       # See table below for definitions
       - LIVE=1
       - CLUSTER=devnet
-      - RPC_URL=<YOUR CUSTOM SOLANA RPC ENTRYPOINT>
+      - RPC_URL=${RPC_URL}
       - ORACLE_KEY=${ORACLE_KEY}
       - HEARTBEAT_INTERVAL=15
-      - GOOGLE_PAYER_SECRET_PATH="projects/202232388340/secrets/oracle-payer-secret"
-      # GCP resource path containing your configuration bucket
+      - GOOGLE_PAYER_SECRET_PATH=${GOOGLE_PAYER_SECRET_PATH}
       - GCP_CONFIG_BUCKET=""
 ```
 
@@ -225,11 +224,15 @@ services:
           <u>Optional</u>
         </b>
         <br />
-        <b>Type</b> - gcp / opentelemetry-collector / prometheus [default]
+        <b>Type</b> - gcp / opentelemetry-collector* / prometheus [default]
         <br />
-        Dictates which metric suited to aggregate resource metrics defined in:
+        Dictates which metric suite to aggregate resource metrics, as defined
+        in:
         <br />
         <a href="../oracle/monitor">Oracle - Monitoring</a>
+        <br />
+        *opentelemetry-collector only supports the default endpoint
+        localhost:55681/v1/metric
       </td>
     </tr>
     <tr>
