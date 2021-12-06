@@ -13,7 +13,7 @@ import MarkdownImage from "../../src/components/MarkdownImage";
 
 An oracle queue is responsible for managing a set of oracles and how they get allocated to aggregator update request. A single Oracle queue was architected to support over 100,000 oracles, but given rent costs, the initial Switchboard DAO will cap queue sizes at 2048 and increase it as the network grows.
 
-### Permission Account
+## Queue Permission Account
 
 Program account controlled by the oracle queue and grants an oracle or aggregator permissions to use its resources.
 
@@ -29,10 +29,10 @@ Contains a collection of aggregators and provides the mechanism to jump start th
 
 An aggregator or data feed is used by on-chain developers to build smart contracts. An aggregator contains a collection of job accounts as well as a configuration dictating how often a feed should be updated and the minimum number of jobs or oracles that must respond before accepting a result. The publisher is ultimately responsible for building a data feed and making the necessary trade-offs as it’s a careful balance between cost and update interval. The publisher is usually the on-chain consumer of the data and will have the most familiarity with how the data may be used to make these considerations.
 
-### Job Account
+## Job Account
 
 The job account is the blueprint for how data gets fetched from off-chain sources and contains a collection of tasks that get executed in sequential order to produce a detereministic result. Typically the first task in a job will fetch external data, with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal.
 
-### Lease Contract
+## Lease Contract
 
 The lease contract is an escrow contract between an oracle queue and an aggregator which contains the up-front capital to reward oracles for processing update request. If a lease falls below the minimum balance, the aggregator will be removed from the queue until it has enough funds. Lease contracts are owned by the program and can be funded by anyone using the data feed.
