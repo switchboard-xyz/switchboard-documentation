@@ -121,18 +121,6 @@ PAGERDUTY_KEY=""
     <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
     </td>
   </tr>
-    <tr>
-    <td>ORACLE_PERMISSION_ACCOUNT</td>
-    <td>Public key of the permission account that allows an oracle to use an oracle queue's resources <br />
-    <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
-    </td>
-  </tr>
-    <tr>
-    <td>SWITCHBOARD_MINT<br />ORACLE_TOKEN_ACCOUNT<br />AUTHORITY_TOKEN_ACCOUNT</td>
-    <td>SPL token mint used for oracle staking and rewards<br />
-    <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
-    </td>
-  </tr>
   <tr>
     <td>GOOGLE_AUTH_CLIENT_ID<br />GOOGLE_AUTH_CLIENT_SECRET</td>
     <td>
