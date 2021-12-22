@@ -15,7 +15,7 @@ Before deploying the application, you must first provision a kubernetes cluster 
 You will need to install the Switchboard V2 CLI to create and manage your oracle account
 
 ```bash npm2yarn
-npm install -g @switchboardv2-cli
+npm install -g @switchboard-xyz/switchboardv2-cli
 ```
 
 ### gcloud SDK
