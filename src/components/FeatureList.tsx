@@ -10,7 +10,7 @@ export const FeatureList: FeatureItem[] = [
     title: "Introduction",
     image: "/img/information.svg",
     description:
-      "Learn about Switchboard and how it enables the community to dictate what data lives on-chain",
+      "Learn about Switchboard and how it enables the community to dictate what data lives   on-chain",
     linkTo: "/introduction",
   },
   {
