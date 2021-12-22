@@ -14,7 +14,9 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "switchboard-xyz", // Usually your GitHub org/user name.
-  projectName: "v2", // Usually your repo name.
+  projectName: "switchboard-documentation", // Usually your repo name.
+  deploymentBranch: "gh-pages",
+  trailingSlash: false,
 
   presets: [
     [
