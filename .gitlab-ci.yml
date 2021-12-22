@@ -15,7 +15,7 @@ default:
         - .yarn-cache
   image:
     entrypoint: [""]
-    name: equalos/docusaurus:slim-alpine
+    name: awesometic/docusaurus
 
 pages:
   after_script:
