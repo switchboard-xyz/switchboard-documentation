@@ -42,9 +42,22 @@ html[data-theme="dark"] {
   color: #ffffff;
 } */
 
-/* a:hover,
+a:hover,
 a:visited,
 a:link,
 a:active {
   text-decoration: none;
-} */
+}
+
+.theme-doc-markdown a:hover {
+  text-decoration: underline;
+}
+.theme-doc-markdown a:visited {
+  text-decoration: underline;
+}
+.theme-doc-markdown a:link {
+  text-decoration: underline;
+}
+.theme-doc-markdown a:active {
+  text-decoration: underline;
+}
