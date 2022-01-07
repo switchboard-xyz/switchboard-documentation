@@ -1,0 +1,170 @@
+---
+sidebar_position: 1
+id: oracle
+slug: /oracle
+title: Introduction
+---
+
+# Introduction
+
+The Switchboard oracle is a node image that sits between the internet and a Solana RPC node and facilitates update request when invoked by a queue. You may wish to run an oracle on a local machine before deploying to a kubernetes cluster:
+
+- [Docker Guide - Running Oracle Locally](../developers/local-oracle)
+
+## Requirements
+
+Running an oracle allows you to contribute to the switchboard network and get compensated for your compute time. In order to run a node and avoid slashing, you should have the following:
+
+- Dedicated RPC endpoint with reliable up-time, capable of supporting websocket connections
+- Kubernetes hosting provider (preferebly Google Cloud Platform to start)
+- Wrapped SOL wallet
+
+A Switchboard oracle can be run on any cloud provider who offers kubernetes services but this guide will currently be focued on Google Cloud. Feel free to contribute to our documentation if you are running an oracle on another provider. Here's some extra reading to learn more about kubernetes:
+
+- [What is Kubernetes?](https://cloud.google.com/learn/what-is-kubernetes)
+- [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
+
+## Dependencies
+
+### Switchboard V2 CLI
+
+You will need to install the Switchboard V2 CLI to create and manage your oracle account
+
+```bash npm2yarn
+npm install -g @switchboard-xyz/switchboardv2-cli
+```
+
+### Solana Keypair
+
+You will need a solana keypair with an active balance. You can create a new keypair using the [Solana CLI](https://docs.solana.com/cli/install-solana-cli-tools) and running the following command:
+
+```bash
+solana-keygen new --outfile secrets/authority-keypair.json
+```
+
+This will output a keypair file to the directory where you ran the command. Make note of the filesystem path for future cli commands. More information on filesystem wallets can be found in [Solana's documentation](https://docs.solana.com/wallet-guide/file-system-wallet)
+
+## Environment
+
+Along with the kubernetes manifest, you will also need to capture the required environment variables. The following steps will walk you through where to locate these variables for your own deployment.
+
+In the root directory of the repository, create a `$ENV_NAME.env` file to keep track of your kubernetes environment, where `$ENV_NAME` could be <i>devnet</i>, <i>mainnet</i>, <i>oracle1</i>, etc to keep track of a specific deployment.
+
+```bash env title="devnet.env"
+# Solana Config
+RPC_URL=""
+CLUSTER=""
+# Switchboard Config
+ORACLE_KEY=""
+# Google Cloud Platform
+GOOGLE_AUTH_CLIENT_ID=""
+GOOGLE_AUTH_CLIENT_SECRET=""
+LOADBALANCER_IP=""
+# Google Secret Manager
+GOOGLE_PAYER_SECRET_PATH=""
+SERVICE_ACCOUNT_BASE64=""
+# Grafana Config
+GRAFANA_HOSTNAME=""
+GRAFANA_ADMIN_PASSWORD=""
+GRAFANA_TLS_CRT=""
+GRAFANA_TLS_KEY=""
+# Alerts
+PAGERDUTY_KEY=""
+```
+
+### Definitions
+
+<table>
+  <tr>
+    <th>Variable Name</th>
+    <th>Definition</th>
+  </tr>
+  <tr>
+    <td>RPC_URL</td>
+    <td>
+      Solana RPC URL that dictates which cluster is used. The default RPC pools
+      should be avoided at all cost as you will quickly hit the rate limits and
+      risk being slashed
+    </td>
+  </tr>
+  <tr>
+    <td>CLUSTER</td>
+    <td>
+      Solana cluster you will be running an oracle on (mainnet-beta/devnet)
+    </td>
+  </tr>
+  <tr>
+    <td>ORACLE_KEY</td>
+    <td>
+      Public key of the oracle account that has been granted permissions to use
+      an oracle queue <br />
+      <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      GOOGLE_AUTH_CLIENT_ID
+      <br />
+      GOOGLE_AUTH_CLIENT_SECRET
+    </td>
+    <td>
+      Google OAuth 2.0 credentials to provision our cluster for us <br />
+      <a href="./kubernetes/google#authentication">
+        Google Cloud Platform #Authentication
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>LOADBALANCER_IP</td>
+    <td>
+      <a href="./kubernetes/google#static-ip">
+        Google Cloud Platform #Static Ip
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>GOOGLE_PAYER_SECRET_PATH</td>
+    <td>
+      <a href="./kubernetes/google#google-secret-manager">
+        Google Cloud Platform #Google Secret Manager
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>SERVICE_ACCOUNT_BASE64</td>
+    <td>
+      <a href="./kubernetes/google#service-account">
+        Google Cloud Platform #Service Account
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_HOSTNAME</td>
+    <td>
+      <a href="./grafana#hostname">Grafana #Hostname</a>
+    </td>
+  </tr>
+  <tr>
+    <td>GRAFANA_ADMIN_PASSWORD</td>
+    <td>Password used to authenticate. You can set this to any value</td>
+  </tr>
+  <tr>
+    <td>
+      GRAFANA_TLS_CRT
+      <br />
+      GRAFANA_TLS_KEY
+    </td>
+    <td>
+      TLS certificate to secure our grafana dashboard
+      <br />
+      <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
+    </td>
+  </tr>
+  <tr>
+    <td>PAGERDUTY_EVENT_KEY</td>
+    <td>
+      Token provided by pagerduty for sending pages. If not in use, set to a
+      dummy string "XXX"
+    </td>
+  </tr>
+</table>

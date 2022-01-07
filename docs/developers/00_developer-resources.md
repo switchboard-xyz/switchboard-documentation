@@ -5,7 +5,9 @@ slug: /developers
 
 # Developer Resources
 
-## switchboardv2-api
+## Switchboard Interfaces
+
+### switchboardv2-api
 
 **Description:** Anchor generated typescript client to interact with the Switchboard program.
 
@@ -17,7 +19,7 @@ slug: /developers
 npm install @switchboard-xyz/switchboardv2-api
 ```
 
-## switchboard-aggregator
+### switchboard-aggregator
 
 **Description:** Rust crate to interact with Switchboard from an on-chain program.
 
