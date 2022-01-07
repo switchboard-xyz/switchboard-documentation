@@ -5,4 +5,68 @@ slug: /architecture/task
 
 # Task
 
-TBD
+## Http
+
+Report the text body of a successful HTTP request to the specified url, or return an error if the response status code is greater than or equal to 400.
+
+## Websocket
+
+Opens and maintains a websocket for light speed data retrieval.
+
+## JsonParse
+
+Walks the path specified and returns the value found at that result. If returning JSON data from the HttpGet or HttpPost adapters, you must use this adapter to parse the response.
+
+## RegexExtract
+
+Extract a value from a response using the provided regex pattern.
+
+## TWAP
+
+V2 ONLY. Takes a twap over a set period for a certain aggregator.
+
+## Conditional
+
+Attempts to execute a set of tasks. If unable to produce an acceptable result, execute another set of tasks.
+
+## LpTokenPrice
+
+Fetch LP token price info from a number of supported exchanges.
+
+## LpExchangeRate
+
+## SerumSwap
+
+Returns the median price for a Serum pool using its lastBid, lastAsk, and lastFill.
+
+## Value
+
+Returns the value specified for use in subsequent tasks.
+
+## Median
+
+Compute the median of the results returned from a set of nested tasks.
+
+## Mean
+
+Take the mean of all the provided subtasks.
+
+## Max
+
+Take the max of all the provided subtasks.
+
+## Multiply
+
+Multiply a numerical input by a scalar value or by another aggregate account.
+
+## Divide
+
+Divide a numerical input by a scalar value or by another aggregate account.
+
+## Add
+
+Add a numerical input by a scalar value or by another aggregate account.
+
+## Subtract
+
+Subtract a numerical input by a scalar value or by another aggregate account.
