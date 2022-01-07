@@ -27,7 +27,7 @@ export const FeatureList: FeatureItem[] = [
     description:
       "Learn how to read Switchboard data on-chain and resolve data feed updates",
 
-    linkTo: "/reading-a-data-feed",
+    linkTo: "/developers/js",
   },
   {
     title: "Oracle",

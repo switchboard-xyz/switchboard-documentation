@@ -7,9 +7,7 @@ title: Introduction
 
 # Introduction
 
-The Switchboard oracle is a node image that sits between the internet and a Solana RPC node and facilitates update request when invoked by a queue. You may wish to run an oracle on a local machine before deploying to a kubernetes cluster:
-
-- [Docker Guide - Running Oracle Locally](../developers/local-oracle)
+The Switchboard oracle is a node image that sits between the internet and a Solana RPC node and facilitates update request when invoked by a queue.
 
 ## Requirements
 
@@ -98,7 +96,9 @@ PAGERDUTY_KEY=""
     <td>
       Public key of the oracle account that has been granted permissions to use
       an oracle queue <br />
-      <a href="./oracle-account#create-oracle">Oracle Account #Create Oracle</a>
+      <a href="../oracle/account#create-oracle">
+        Oracle Account #Create Oracle
+      </a>
     </td>
   </tr>
   <tr>
@@ -109,7 +109,7 @@ PAGERDUTY_KEY=""
     </td>
     <td>
       Google OAuth 2.0 credentials to provision our cluster for us <br />
-      <a href="./kubernetes/google#authentication">
+      <a href="../oracle/kubernetes/google#authentication">
         Google Cloud Platform #Authentication
       </a>
     </td>
@@ -117,7 +117,7 @@ PAGERDUTY_KEY=""
   <tr>
     <td>LOADBALANCER_IP</td>
     <td>
-      <a href="./kubernetes/google#static-ip">
+      <a href="../oracle/kubernetes/google#static-ip">
         Google Cloud Platform #Static Ip
       </a>
     </td>
@@ -125,7 +125,7 @@ PAGERDUTY_KEY=""
   <tr>
     <td>GOOGLE_PAYER_SECRET_PATH</td>
     <td>
-      <a href="./kubernetes/google#google-secret-manager">
+      <a href="../oracle/kubernetes/google#google-secret-manager">
         Google Cloud Platform #Google Secret Manager
       </a>
     </td>
@@ -133,7 +133,7 @@ PAGERDUTY_KEY=""
   <tr>
     <td>SERVICE_ACCOUNT_BASE64</td>
     <td>
-      <a href="./kubernetes/google#service-account">
+      <a href="../oracle/kubernetes/google#service-account">
         Google Cloud Platform #Service Account
       </a>
     </td>
@@ -141,7 +141,7 @@ PAGERDUTY_KEY=""
   <tr>
     <td>GRAFANA_HOSTNAME</td>
     <td>
-      <a href="./grafana#hostname">Grafana #Hostname</a>
+      <a href="../oracle/grafana#hostname">Grafana #Hostname</a>
     </td>
   </tr>
   <tr>
@@ -157,7 +157,7 @@ PAGERDUTY_KEY=""
     <td>
       TLS certificate to secure our grafana dashboard
       <br />
-      <a href="./grafana#tls-certificate">Grafana #TLS Certificate</a>
+      <a href="../oracle/grafana#tls-certificate">Grafana #TLS Certificate</a>
     </td>
   </tr>
   <tr>
