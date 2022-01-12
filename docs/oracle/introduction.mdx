@@ -7,7 +7,11 @@ title: Introduction
 
 # Introduction
 
-The Switchboard oracle is a node image that sits between the internet and a Solana RPC node and facilitates update request when invoked by a queue.
+The Switchboard oracle is a node image that sits between the internet and a Solana RPC node and facilitates update request when invoked by a queue. Before running an oracle you will need to
+
+- Create an oracle account for a specified queue
+- Fund oracle staking wallet with minimum stake set by the queue
+- Get approved to join the queue by the queue authority
 
 ## Requirements
 
@@ -17,7 +21,7 @@ Running an oracle allows you to contribute to the switchboard network and get co
 - Kubernetes hosting provider (preferebly Google Cloud Platform to start)
 - Wrapped SOL wallet
 
-A Switchboard oracle can be run on any cloud provider who offers kubernetes services but this guide will currently be focued on Google Cloud. Feel free to contribute to our documentation if you are running an oracle on another provider. Here's some extra reading to learn more about kubernetes:
+A Switchboard oracle can be run on any cloud provider who offers kubernetes services but this guide will currently be focused on Google Cloud. Feel free to contribute to our documentation if you are running an oracle on another provider. Here's some extra reading to learn more about kubernetes:
 
 - [What is Kubernetes?](https://cloud.google.com/learn/what-is-kubernetes)
 - [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
