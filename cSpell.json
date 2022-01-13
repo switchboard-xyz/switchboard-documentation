@@ -34,7 +34,9 @@
     "heartbeated",
     "disincentivizes",
     "incentivizes",
-    "keypairs"
+    "keypairs",
+    "solflare",
+    "sollet"
   ],
   "ignoreRegExpList": [
     "\\((.*)\\)", // Markdown links
