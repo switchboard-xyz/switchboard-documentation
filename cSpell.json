@@ -33,7 +33,8 @@
     "heartbeating",
     "heartbeated",
     "disincentivizes",
-    "incentivizes"
+    "incentivizes",
+    "keypairs"
   ],
   "ignoreRegExpList": [
     "\\((.*)\\)", // Markdown links
