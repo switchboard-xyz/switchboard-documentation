@@ -2,7 +2,7 @@
 interact with a switchboard job account
 
 * [`sbv2 job:create:copy JOBSOURCE`](#sbv2-jobcreatecopy-jobsource)
-* [`sbv2 job:create:json JOBDEFINITION`](#sbv2-jobcreatejson-jobdefinition)
+* [`sbv2 job:create:json DEFINITIONFILE`](#sbv2-jobcreatejson-definitionfile)
 * [`sbv2 job:create:template TEMPLATE ID`](#sbv2-jobcreatetemplate-template-id)
 
 ## `sbv2 job:create:copy JOBSOURCE`
@@ -39,43 +39,45 @@ EXAMPLE
 
 _See code: [src/commands/job/create/copy.ts](https://github.com/switchboard-xyz/switchboardv2-cli/blob/v0.1.3/src/commands/job/create/copy.ts)_
 
-## `sbv2 job:create:json JOBDEFINITION`
+## `sbv2 job:create:json DEFINITIONFILE`
 
-create a new on-chain job account from a json file
+create a job from a json file
 
 ```
 USAGE
-  $ sbv2 job:create:json JOBDEFINITION
+  $ sbv2 job:create:json DEFINITIONFILE
 
 ARGUMENTS
-  JOBDEFINITION  filesystem path to the json file containing the job definition
+  DEFINITIONFILE  filesystem path of job definition json file
 
 OPTIONS
-  -f, --outputFile=outputFile  output file to save job definition to
-  -h, --help                   show CLI help
+  -h, --help                                 show CLI help
 
-  -k, --keypair=keypair        keypair that will pay for onchain transactions. defaults to new account authority if no
-                               alternate authority provided
+  -k, --keypair=keypair                      keypair that will pay for onchain transactions. defaults to new account
+                                             authority if no alternate authority provided
 
-  -n, --name=name              name of the job account for easier identification
+  -s, --silent                               suppress cli prompts
 
-  -s, --silent                 suppress cli prompts
+  -u, --rpcUrl=rpcUrl                        alternate RPC url
 
-  -u, --rpcUrl=rpcUrl          alternate RPC url
+  -v, --verbose                              log everything
 
-  -v, --verbose                log everything
+  --aggregatorAuthority=aggregatorAuthority  filesystem path of aggregator authority keypair to add job account to
 
-  --force                      skip job confirmation
+  --aggregatorKey=aggregatorKey              public key of aggregator to add job to
 
-  --mainnetBeta                WARNING: use mainnet-beta solana cluster
+  --force                                    overwrite output file
 
-  --outKeypair=outKeypair      existing keypair file to store new account. useful for using the same public key on
-                               different clusters
+  --mainnetBeta                              WARNING: use mainnet-beta solana cluster
 
-EXAMPLES
-  $ sbv2 job:create:json examples/job.json --keypair ../payer-keypair.json
-  $ sbv2 job:create:json examples/job.json --keypair ../payer-keypair.json --name ftxUs_Btc
-  $ sbv2 job:create:json examples/job.json --keypair ../payer-keypair.json --outKeypair= ftxUs_Btc.json
+  --outputFile=outputFile                    output job schema to a json file
+
+ALIASES
+  $ sbv2 json:create:job
+
+EXAMPLE
+  $ sbv2 job:create:json examples/job.json --keypair ../payer-keypair.json 
+  --aggregatorAuthority=../aggregator-keypair.json --outputFile=job.schema.json
 ```
 
 _See code: [src/commands/job/create/json.ts](https://github.com/switchboard-xyz/switchboardv2-cli/blob/v0.1.3/src/commands/job/create/json.ts)_

@@ -1,9 +1,11 @@
+
 interact with a switchboard aggregator account
 
-- [`sbv2 aggregator:add:job AGGREGATORKEY`](#sbv2-aggregatoraddjob-aggregatorkey)
-- [`sbv2 aggregator:create:copy AGGREGATORSOURCE QUEUEKEY`](#sbv2-aggregatorcreatecopy-aggregatorsource-queuekey)
-- [`sbv2 aggregator:remove:job AGGREGATORKEY JOBKEY`](#sbv2-aggregatorremovejob-aggregatorkey-jobkey)
-- [`sbv2 aggregator:update AGGREGATORKEY`](#sbv2-aggregatorupdate-aggregatorkey)
+* [`sbv2 aggregator:add:job AGGREGATORKEY`](#sbv2-aggregatoraddjob-aggregatorkey)
+* [`sbv2 aggregator:create:copy AGGREGATORSOURCE QUEUEKEY`](#sbv2-aggregatorcreatecopy-aggregatorsource-queuekey)
+* [`sbv2 aggregator:create:json DEFINITIONFILE`](#sbv2-aggregatorcreatejson-definitionfile)
+* [`sbv2 aggregator:remove:job AGGREGATORKEY JOBKEY`](#sbv2-aggregatorremovejob-aggregatorkey-jobkey)
+* [`sbv2 aggregator:update AGGREGATORKEY`](#sbv2-aggregatorupdate-aggregatorkey)
 
 ## `sbv2 aggregator:add:job AGGREGATORKEY`
 
@@ -78,11 +80,54 @@ OPTIONS
                                different clusters
 
 EXAMPLE
-  $ sbv2 aggregator:create:copy 8SXvChNYFhRq4EZuZvnhjrB3jJRQCv4k3P4W6hesH3Ee
+  $ sbv2 aggregator:create:copy 8SXvChNYFhRq4EZuZvnhjrB3jJRQCv4k3P4W6hesH3Ee 
   AY3vpUu6v49shWajeFjHjgikYfaBWNJgax8zoEouUDTs --keypair ../payer-keypair.json
 ```
 
 _See code: [src/commands/aggregator/create/copy.ts](https://github.com/switchboard-xyz/switchboardv2-cli/blob/v0.1.3/src/commands/aggregator/create/copy.ts)_
+
+## `sbv2 aggregator:create:json DEFINITIONFILE`
+
+create an aggregator from a json file
+
+```
+USAGE
+  $ sbv2 aggregator:create:json DEFINITIONFILE
+
+ARGUMENTS
+  DEFINITIONFILE  filesystem path of queue definition json file
+
+OPTIONS
+  -h, --help                           show CLI help
+
+  -k, --keypair=keypair                keypair that will pay for onchain transactions. defaults to new account authority
+                                       if no alternate authority provided
+
+  -s, --silent                         suppress cli prompts
+
+  -u, --rpcUrl=rpcUrl                  alternate RPC url
+
+  -v, --verbose                        log everything
+
+  --authorityKeypair=authorityKeypair  alternate keypair that will be the authority for the aggregator
+
+  --force                              overwrite output file
+
+  --mainnetBeta                        WARNING: use mainnet-beta solana cluster
+
+  --outputFile=outputFile              output aggregator definition to a json file
+
+  --queueKey=queueKey                  public key of the oracle queue to create aggregator for
+
+ALIASES
+  $ sbv2 json:create:aggregator
+
+EXAMPLE
+  $ sbv2 create:aggregator:json examples/aggregator.json ../payer-keypair.json --queueKey 
+  GhYg3R1V6DmJbwuc57qZeoYG6gUuvCotUF1zU3WCj98U --outputFile aggregator.schema.json
+```
+
+_See code: [src/commands/aggregator/create/json.ts](https://github.com/switchboard-xyz/switchboardv2-cli/blob/v0.1.3/src/commands/aggregator/create/json.ts)_
 
 ## `sbv2 aggregator:remove:job AGGREGATORKEY JOBKEY`
 
