@@ -36,7 +36,20 @@
     "incentivizes",
     "keypairs",
     "solflare",
-    "sollet"
+    "sollet",
+    "Bignum",
+    "subjobs",
+    "raydium",
+    "orderbook",
+    "Protobuf",
+    "sint",
+    "Fixnum",
+    "ulong",
+    "sfixed",
+    "pubkeys",
+    "pubkey",
+    "proto",
+    "xstep"
   ],
   "ignoreRegExpList": [
     "\\((.*)\\)", // Markdown links

@@ -59,11 +59,11 @@ An object that represents a header to add to an HTTP request.
 
 An enumeration representing the types of HTTP requests available to make.
 
-| Name          | Number | Description                                  |
-| ------------- | ------ | -------------------------------------------- |
-| METHOD_UNKOWN | 0      | Unset HTTP method will default to METHOD_GET |
-| METHOD_GET    | 1      | Perform an HTTP &#39;GET&#39; request.       |
-| METHOD_POST   | 2      | Perform an HTTP &#39;POST&#39; request.      |
+| Name           | Number | Description                                  |
+| -------------- | ------ | -------------------------------------------- |
+| METHOD_UNKNOWN | 0      | Unset HTTP method will default to METHOD_GET |
+| METHOD_GET     | 1      | Perform an HTTP &#39;GET&#39; request.       |
+| METHOD_POST    | 2      | Perform an HTTP &#39;POST&#39; request.      |
 
 <a name=".OracleJob.WebsocketTask"></a>
 
@@ -208,7 +208,7 @@ aggregate.
 | Field             | Type                    | Label    | Description                                                                        |
 | ----------------- | ----------------------- | -------- | ---------------------------------------------------------------------------------- |
 | scalar            | [double](#double)       | optional | Specifies a basic scalar denominator to divide by.                                 |
-| aggregator_pubkey | [string](#string)       | optional | Specifies another aggregator resut to divide by.                                   |
+| aggregator_pubkey | [string](#string)       | optional | Specifies another aggregator result to divide by.                                  |
 | job               | [OracleJob](#OracleJob) | optional | A job whose result is computed before dividing our numerical input by that result. |
 
 <a name=".OracleJob.AddTask"></a>
