@@ -126,3 +126,13 @@ html[data-theme="dark"] .navbar {
 .navbar__link--active {
   font-weight: 600;
 }
+
+.field-table {
+  width: "100%";
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+}

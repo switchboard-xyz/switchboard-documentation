@@ -50,4 +50,4 @@ If a randomness request is surfaced to an oracle before finalization on chain, a
 
 ### Design Decision
 
-Given the above considerations and given Solanas block generation speed, attack scope is more narrowed when including the most recent blockhash to minimize randomness foresight on producer secret key leaks.
+Given the above considerations and given Solana's block generation speed, attack scope is more narrowed when including the most recent blockhash to minimize randomness foresight on producer secret key leaks.

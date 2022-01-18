@@ -1,5 +1,5 @@
 ---
-sidebar_position: 90
+sidebar_position: 70
 ---
 
 # Monitoring
@@ -35,7 +35,7 @@ For users that are either not running on GCP or want a more cost effective solut
   </tr>
   <tr>
     <td>switchboard_job_success_total</td>
-    <td>a counter for every time there is a sucessful completion of a job</td>
+    <td>a counter for every time there is a successful completion of a job</td>
   </tr>
   <tr>
     <td>switchboard_job_posting_total</td>
