@@ -111,8 +111,8 @@ This task will run the `attempt` subtasks in an effort to produce a valid numeri
 
 | Field      | Type                    | Label    | Description                                                                                           |
 | ---------- | ----------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| attempt    | [OracleJob.Task](#task) | repeated | A list of subtasks to process in an attempt to produce a valid numerical result.                      |
-| on_failure | [OracleJob.Task](#task) | repeated | A list of subtasks that will be run if `attempt` subtasks are unable to produce an acceptable result. |
+| attempt    | [OracleJob.Task](#) | repeated | A list of subtasks to process in an attempt to produce a valid numerical result.                      |
+| on_failure | [OracleJob.Task](#) | repeated | A list of subtasks that will be run if `attempt` subtasks are unable to produce an acceptable result. |
 
 <a name=".OracleJob.LpExchangeRateTask"></a>
 
@@ -159,7 +159,7 @@ Returns the maximum value of all the results returned by the provided subtasks a
 
 | Field | Type                    | Label    | Description                                                        |
 | ----- | ----------------------- | -------- | ------------------------------------------------------------------ |
-| tasks | [OracleJob.Task](#task) | repeated | A list of subtasks to process and produce a list of result values. |
+| tasks | [OracleJob.Task](#) | repeated | A list of subtasks to process and produce a list of result values. |
 | jobs  | [OracleJob](#OracleJob) | repeated | A list of subjobs to process and produce a list of result values.  |
 
 <a name=".OracleJob.MeanTask"></a>
@@ -170,7 +170,7 @@ Returns the mean of all the results returned by the provided subtasks and subjob
 
 | Field | Type                    | Label    | Description                                                        |
 | ----- | ----------------------- | -------- | ------------------------------------------------------------------ |
-| tasks | [OracleJob.Task](#task) | repeated | A list of subtasks to process and produce a list of result values. |
+| tasks | [OracleJob.Task](#) | repeated | A list of subtasks to process and produce a list of result values. |
 | jobs  | [OracleJob](#OracleJob) | repeated | A list of subjobs to process and produce a list of result values.  |
 
 <a name=".OracleJob.MedianTask"></a>
@@ -182,7 +182,7 @@ tasks must return a Number.
 
 | Field | Type                    | Label    | Description                                                        |
 | ----- | ----------------------- | -------- | ------------------------------------------------------------------ |
-| tasks | [OracleJob.Task](#task) | repeated | A list of subtasks to process and produce a list of result values. |
+| tasks | [OracleJob.Task](#) | repeated | A list of subtasks to process and produce a list of result values. |
 | jobs  | [OracleJob](#OracleJob) | repeated | A list of subjobs to process and produce a list of result values.  |
 
 <a name=".OracleJob.MultiplyTask"></a>

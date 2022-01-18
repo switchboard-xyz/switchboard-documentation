@@ -7,56 +7,6 @@ slug: /architecture/job
 
 A job account contains the blueprint for how an oracle retrieves data off-chain and arrives at a single value. Typically the first task in a job will fetch external data with subsequent tasks responsible for parsing the response and transforming the value into a single data type, like an integer or decimal.
 
-## Task Definitions
-
-The table below contains the different task available to retrieve data off-chain. More information can be found [here](https://switchboard-protodoc.tiiny.site/#OracleJob).
-
-<table>
-  <tr>
-    <th>Task</th>
-    <th>Definition</th>
-  </tr>
-  <tr>
-    <td>Http</td>
-    <td>
-      Report the text body of a successful HTTP request to the specified url, or
-      return an error if the response status code is greater than or equal to
-      400
-    </td>
-  </tr>
-  <tr>
-    <td>Websocket</td>
-    <td>Opens and maintains a websocket for light speed data retrieval</td>
-  </tr>
-  <tr>
-    <td>JsonParse</td>
-    <td>
-      Walks the path specified and returns the value found at that result. If
-      returning JSON data from the HttpGet or HttpPost adapters, you must use
-      this adapter to parse the response
-    </td>
-  </tr>
-  <tr>
-    <td>Mean</td>
-    <td>Take the mean of all the provided subtasks</td>
-  </tr>
-  <tr>
-    <td>Median</td>
-    <td>
-      This task will take the median of the results of the nested tasks. Nested
-      tasks must return a Number.
-    </td>
-  </tr>
-  <tr>
-    <td>Multiply</td>
-    <td>Multiply a numerical input by a scalar value or by another</td>
-  </tr>
-  <tr>
-    <td>Divide</td>
-    <td>Divide a numerical input by a scalar value or by another</td>
-  </tr>
-</table>
-
 ## JobAccount Definition
 
 <table>
