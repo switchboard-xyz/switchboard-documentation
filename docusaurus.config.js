@@ -17,7 +17,7 @@ const config = {
   projectName: "switchboard-documentation", // Usually your repo name.
   deploymentBranch: "gh-pages",
   trailingSlash: false,
-
+  plugins: ["my-loaders"],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -30,10 +30,10 @@ const config = {
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
-          editUrl:
-            process.env.NODE_ENV === "production"
-              ? process.env.CI_PROJECT_URL + "/-/edit/main/"
-              : "/",
+          // editUrl:
+          //   process.env.NODE_ENV === "production"
+          //     ? process.env.CI_PROJECT_URL + "/-/edit/main/"
+          //     : "/",
         },
         pages: {
           remarkPlugins: [require("@docusaurus/remark-plugin-npm2yarn")],
@@ -67,7 +67,7 @@ const config = {
       },
       // Only for code blocks
       prism: {
-        theme: require("prism-react-renderer/themes/shadesOfPurple"),
+        theme: require("prism-react-renderer/themes/nightOwl"),
         additionalLanguages: ["rust", "toml", "docker", "bash", "yaml"],
       },
       navbar: {
@@ -75,8 +75,8 @@ const config = {
         hideOnScroll: false,
         logo: {
           alt: "Switchboard Logo",
-          src: "img/switchboard_purple.png",
-          srcDark: "img/switchboard_purple.png",
+          src: "img/navbar_icon.svg",
+          srcDark: "img/logo.svg",
         },
         items: [
           // Need to bring in Algolia DocSearch https://docsearch.algolia.com/
@@ -119,7 +119,7 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "DOCS",
             items: [
               {
                 label: "Developer Resources",
@@ -136,7 +136,7 @@ const config = {
             ],
           },
           {
-            title: "Community",
+            title: "COMMUNITY",
             items: [
               {
                 label: "Discord",
@@ -157,7 +157,7 @@ const config = {
             ],
           },
           {
-            title: "More",
+            title: "MORE",
             items: [
               {
                 label: "Medium",

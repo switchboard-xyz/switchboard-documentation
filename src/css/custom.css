@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap");
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -6,14 +8,20 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #635bff;
-  --ifm-color-primary-dark: #4238ff;
-  --ifm-color-primary-darker: #3227ff;
-  --ifm-color-primary-darkest: #0c00f2;
-  --ifm-color-primary-light: #847eff;
-  --ifm-color-primary-lighter: #948fff;
-  --ifm-color-primary-lightest: #c6c3ff;
+  --ifm-color-primary: #4c6fff;
   --ifm-code-font-size: 95%;
+  --ifm-font-family-base: "Source Sans Pro";
+  --ifm-link-hover-color: #0a2540;
+}
+
+html[data-theme="dark"] {
+  --ifm-background-color: #1f354b;
+  --ifm-color-emphasis-100: #182436;
+  --ifm-link-hover-color: #fff;
+}
+
+.alert--info {
+  --ifm-alert-background-color: inherit;
 }
 
 html[data-theme="dark"] .docs-doc-page tr:nth-child(even) td:nth-child(n + 2) {
@@ -32,15 +40,46 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 }
 
 html[data-theme="dark"] .navbar {
-  background-color: #232f3e;
+  background-color: #0a2540;
 }
-html[data-theme="dark"] {
-  --ifm-background-color: #232f3e;
+.footer--dark {
+  background-color: #0a2540;
+  width: 100vw;
+  display: flex;
+  padding-left: 40px;
 }
 
-/* main[data-theme="dark"] {
-  color: #ffffff;
-} */
+.footer__link-item,
+.footer__title {
+  color: #8998aa;
+}
+
+.footer > .container {
+  max-width: 1024px;
+}
+
+@media (max-width: 996px) {
+  .row .col.col.col {
+    --ifm-col-width: 180px;
+  }
+}
+
+.col.footer__col {
+  max-width: 300px;
+}
+
+.footer__link-item:hover {
+  color: white;
+}
+
+.clean-btn {
+  color: #6b7c93;
+  margin-right: 15px;
+}
+
+.menu__link--active {
+  font-weight: 600;
+}
 
 a:hover,
 a:visited,
@@ -60,4 +99,30 @@ a:active {
 }
 .theme-doc-markdown a:active {
   text-decoration: underline;
+}
+
+.navbar {
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  padding-left: 40px;
+}
+
+html[data-theme="dark"] .navbar {
+  border-bottom: solid 1px #8998aa;
+}
+
+.navbar__inner {
+  max-width: 1024px;
+  margin: auto;
+}
+
+.navbar__logo {
+  margin-right: 20px;
+  height: 44px;
+  width: 44px;
+}
+
+.navbar__link--active {
+  font-weight: 600;
 }

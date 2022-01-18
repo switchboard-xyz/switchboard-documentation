@@ -8,44 +8,44 @@ export type FeatureItem = {
 export const FeatureList: FeatureItem[] = [
   {
     title: "Introduction",
-    image: "/img/information.svg",
+    image: "/img/info.png",
     description:
-      "Learn about Switchboard and how it enables the community to dictate what data lives on-chain",
+      "Learn about Switchboard and how it enables the community to dictate what data lives on-chain.",
     linkTo: "/introduction",
   },
   {
     title: "Architecture",
-    image: "/img/blueprint.svg",
+    image: "/img/arc.png",
     description:
-      "Learn about the different Switchboard components and how they interact",
+      "Learn about the different Switchboard components and how they interact.",
 
     linkTo: "/architecture",
   },
   {
     title: "On-Chain",
-    image: "/img/solana-gradient.svg",
+    image: "/img/sol.png",
     description:
-      "Learn how to read Switchboard data on-chain and resolve data feed updates",
+      "Learn how to read Switchboard data on-chain and resolve data feed updates.",
 
     linkTo: "/reading-a-data-feed",
   },
   {
     title: "Oracle",
-    image: "/img/atom.svg",
+    image: "/img/oracle.png",
     description:
-      "Learn how to contribute to the network and process data feed updates",
+      "Learn how to contribute to the network and process data feed updates.",
     linkTo: "/oracle",
   },
   {
     title: "Develop",
-    image: "/img/package.svg",
-    description: "Learn how to develop with Switchboard and use the APIs",
+    image: "/img/developers.png",
+    description: "Learn how to develop with Switchboard and use the APIs.",
     linkTo: "/developers",
   },
   {
     title: "Explore",
-    image: "/img/search.svg",
-    description: "Explore what data Switchboard currently provides on-chain",
+    image: "/img/explore.png",
+    description: "Explore what data Switchboard currently provides on-chain.",
     linkTo: "https://switchboard.xyz/explorer",
   },
 ];

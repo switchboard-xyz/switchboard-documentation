@@ -9,9 +9,10 @@ title: On-Chain Randomness
 <span
 style={{
         color:"#990000",
-        fontSize:"2em"
+        fontWeight: 600,
+        fontSize:"1.2em"
     }}>
-In progress: </span> For devnet usage of a Verifiable Random Function (VRF) on Solana using Switchboard V1's oracle network
+IN PROGRESS: </span> For devnet usage of a Verifiable Random Function (VRF) on Solana using Switchboard V1's oracle network
 
 ## Basic Steps
 
