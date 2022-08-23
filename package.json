@@ -23,9 +23,10 @@
     "update:tasks": "protoc --proto_path=../libraries/protos --doc_out=api --doc_opt=markdown,_tasks.md ../switchboard-v2/libraries/protos/job_schemas.proto",
     "spellcheck": "cspell --config ./cSpell.json \"**/*.md*\"",
     "typecheck": "tsc",
-    "docs:build": "yarn docs:build:ts && yarn docs:build:sbv2-utils",
+    "docs:build": "yarn docs:build:ts && yarn docs:build:sbv2-utils && yarn docs:build:sbv2-lite",
     "docs:build:ts": "typedoc --entryPointStrategy resolve --out ./static/api/ts --tsconfig ../switchboard-v2/libraries/ts/tsconfig.base.json  ../switchboard-v2/libraries/ts/src/index.ts",
     "docs:build:sbv2-utils": "typedoc --entryPointStrategy resolve --out ./static/api/sbv2-utils --tsconfig ../switchboard-v2/libraries/sbv2-utils/tsconfig.base.json  ../switchboard-v2/libraries/sbv2-utils/src/index.ts",
+    "docs:build:sbv2-lite": "typedoc --entryPointStrategy resolve --out ./static/api/sbv2-lite --tsconfig ../switchboard-v2/libraries/sbv2-lite/tsconfig.base.json  ../switchboard-v2/libraries/sbv2-lite/src/index.ts",
     "test": "echo \"No test script for website\" && exit 0"
   },
   "dependencies": {
